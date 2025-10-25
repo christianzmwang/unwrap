@@ -42,6 +42,44 @@ export default function Home() {
     return `${month}/${day}/${year}`;
   };
 
+  const formatDate = (date: Date) => {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${month}/${day}/${year}`;
+  };
+
+  const getDisplayDateRange = () => {
+    if (dateRange === 'CUSTOM' && customStartDate && customEndDate) {
+      return `${formatTimeline(customStartDate)} - ${formatTimeline(customEndDate)}`;
+    }
+
+    const now = new Date();
+    const cutoffDate = new Date(now);
+
+    switch (dateRange) {
+      case '7D':
+        cutoffDate.setDate(now.getDate() - 7);
+        break;
+      case '1M':
+        cutoffDate.setMonth(now.getMonth() - 1);
+        break;
+      case '3M':
+        cutoffDate.setMonth(now.getMonth() - 3);
+        break;
+      case '6M':
+        cutoffDate.setMonth(now.getMonth() - 6);
+        break;
+      case '1Y':
+        cutoffDate.setFullYear(now.getFullYear() - 1);
+        break;
+      default:
+        return '';
+    }
+
+    return `${formatDate(cutoffDate)} - ${formatDate(now)}`;
+  };
+
   useEffect(() => {
     let cancelled = false;
 
@@ -255,71 +293,41 @@ export default function Home() {
 
       {/* Date Range Selector */}
       <div className="border-t border-gray-800 bg-gray-900/50 backdrop-blur">
-        <div className="max-w-3xl mx-auto w-full px-6 py-4">
-          <div className="flex gap-3 items-center justify-center">
-          {(['7D', '1M', '3M', '6M', '1Y', 'CUSTOM'] as DateRange[]).map((range) => (
-            <button
-              key={range}
-              onClick={() => {
-                if (range === 'CUSTOM') {
+        <div className="max-w-full mx-auto w-full px-6 py-4 relative">
+          <div className="flex items-center justify-center">
+            <div className="flex gap-3 items-center">
+              {(['7D', '1M', '3M', '6M', '1Y'] as DateRange[]).map((range) => (
+                <button
+                  key={range}
+                  onClick={() => {
+                    setDateRange(range);
+                  }}
+                  className={`px-5 py-2 font-medium transition-colors border ${
+                    dateRange === range
+                      ? 'bg-white text-black border-white'
+                      : 'bg-gray-800 text-white hover:bg-gray-700 border-gray-800'
+                  }`}
+                >
+                  {range}
+                </button>
+              ))}
+              <button
+                onClick={() => {
                   setShowCustomDialog(true);
-                } else {
-                  setDateRange(range);
-                }
-              }}
-              className={`px-5 py-2 font-medium transition-colors border ${
-                dateRange === range
-                  ? 'bg-white text-black border-white'
-                  : 'bg-gray-800 text-white hover:bg-gray-700 border-gray-800'
-              }`}
-            >
-              {range}
-            </button>
-          ))}
-        </div>
-
-        {/* Custom Date Dialog */}
-        {showCustomDialog && (
-          <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50">
-            <div className="bg-gray-900 p-6 border border-gray-700 max-w-md w-full">
-              <h3 className="text-white text-xl font-bold mb-4">Custom Date Range</h3>
-              <div className="space-y-4">
-                <div>
-                  <label className="text-white text-sm mb-2 block">Start Date</label>
-                  <input
-                    type="date"
-                    value={customStartDate}
-                    onChange={(e) => setCustomStartDate(e.target.value)}
-                    className="w-full px-3 py-2 bg-gray-800 text-white border border-gray-700"
-                  />
-                </div>
-                <div>
-                  <label className="text-white text-sm mb-2 block">End Date</label>
-                  <input
-                    type="date"
-                    value={customEndDate}
-                    onChange={(e) => setCustomEndDate(e.target.value)}
-                    className="w-full px-3 py-2 bg-gray-800 text-white border border-gray-700"
-                  />
-                </div>
-                <div className="flex gap-4 mt-6">
-                  <button
-                    onClick={handleCustomDateApply}
-                    className={`flex-1 ${dashboardButtonBase} font-semibold bg-white text-black hover:bg-gray-200`}
-                  >
-                    Apply
-                  </button>
-                  <button
-                    onClick={() => setShowCustomDialog(false)}
-                    className={`flex-1 ${dashboardButtonBase} font-semibold bg-gray-800 text-white hover:bg-gray-700`}
-                  >
-                    Cancel
-                  </button>
-                </div>
-              </div>
+                }}
+                className={`px-5 py-2 font-medium transition-colors border ${
+                  dateRange === 'CUSTOM'
+                    ? 'bg-white text-black border-white'
+                    : 'bg-gray-800 text-white hover:bg-gray-700 border-gray-800'
+                }`}
+              >
+                CUSTOM
+              </button>
             </div>
           </div>
-        )}
+          <div className="absolute right-6 top-1/2 -translate-y-1/2 text-white text-sm font-medium">
+            {getDisplayDateRange()}
+          </div>
         </div>
       </div>
 
@@ -327,6 +335,49 @@ export default function Home() {
       <div className="border-t border-gray-800 bg-black/80 backdrop-blur">
         <Taskbar />
       </div>
+
+      {/* Custom Date Dialog - Rendered at top level to avoid clipping */}
+      {showCustomDialog && (
+        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50">
+          <div className="bg-black p-6 border border-gray-700 max-w-md w-full mx-4">
+            <h3 className="text-white text-xl font-bold mb-4">Custom Date Range</h3>
+            <div className="space-y-4">
+              <div>
+                <label className="text-white text-sm mb-2 block">Start Date</label>
+                <input
+                  type="date"
+                  value={customStartDate}
+                  onChange={(e) => setCustomStartDate(e.target.value)}
+                  className="w-full px-3 py-2 bg-black text-white border border-gray-700"
+                />
+              </div>
+              <div>
+                <label className="text-white text-sm mb-2 block">End Date</label>
+                <input
+                  type="date"
+                  value={customEndDate}
+                  onChange={(e) => setCustomEndDate(e.target.value)}
+                  className="w-full px-3 py-2 bg-black text-white border border-gray-700"
+                />
+              </div>
+              <div className="flex gap-4 mt-6">
+                <button
+                  onClick={handleCustomDateApply}
+                  className={`flex-1 ${dashboardButtonBase} font-semibold bg-white text-black hover:bg-gray-200`}
+                >
+                  Apply
+                </button>
+                <button
+                  onClick={() => setShowCustomDialog(false)}
+                  className={`flex-1 ${dashboardButtonBase} font-semibold bg-gray-800 text-white hover:bg-gray-700`}
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
