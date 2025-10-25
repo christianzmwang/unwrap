@@ -157,7 +157,7 @@ export default function Chat() {
         <form onSubmit={handleSubmit} className="max-w-3xl mx-auto w-full px-6 py-4">
           <div className="flex gap-3 items-center">
             <textarea
-              className="flex-1 resize-none bg-gray-900 border border-gray-800 text-gray-100 placeholder-gray-500 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-gray-500/60"
+              className="flex-1 resize-none bg-gray-900 border border-gray-800 text-gray-100 placeholder-gray-500 px-4 py-2 focus:outline-none"
               placeholder="Ask anything..."
               value={input}
               onChange={(event) => setInput(event.target.value)}

@@ -1,6 +1,6 @@
 'use client';
 
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
@@ -29,11 +29,6 @@ export default function Taskbar({
   showTopBorder = false,
 }: TaskbarProps) {
   const pathname = usePathname();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   const outerClasses = [
     'w-full',
@@ -55,7 +50,7 @@ export default function Taskbar({
     <nav className={outerClasses} aria-label="Primary">
       <div className={innerClasses}>
         {links.map(({ href, label }, index) => {
-          const isActive = mounted ? isActiveRoute(pathname, href) : false;
+          const isActive = isActiveRoute(pathname, href);
           const linkClasses = [
             'transition-colors',
             isActive ? 'text-gray-400' : 'text-white hover:text-gray-300',
