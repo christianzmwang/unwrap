@@ -1,17 +1,23 @@
 'use client';
 
 import Taskbar from '@/components/Taskbar';
+import WordHeatMap from '@/components/WordHeatMap';
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-black flex flex-col">
+    <div className="h-screen bg-black flex flex-col">
       {/* Top left logo */}
-      <div className="p-6">
-        <h1 className="text-white text-2xl font-bold">BLACK SWAN</h1>
+      <div className="px-6 py-4">
+        <h1 className="text-white text-lg">BLACK SWAN</h1>
       </div>
+      
+      {/* Separator */}
+      <div className="border-b border-gray-800"></div>
 
-      {/* Main content area (empty) */}
-      <div className="flex-1"></div>
+      {/* Main content area with heat map */}
+      <div className="flex-1 overflow-hidden">
+        <WordHeatMap />
+      </div>
 
       {/* Bottom taskbar */}
       <div className="border-t border-gray-800 bg-black/80 backdrop-blur">

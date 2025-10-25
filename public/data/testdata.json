@@ -1,0 +1,2647 @@
+{
+  "Subreddit": "uberdrivers",
+  "Raw_insights": [
+    {
+      "Topic": "Lack of Tips",
+      "Timeline": "2024-06-15",
+      "Mentions": 75
+    },
+    {
+      "Topic": "App Glitches",
+      "Timeline": "2024-06-16",
+      "Mentions": 50
+    },
+    {
+      "Topic": "Surge Pricing Issues",
+      "Timeline": "2024-06-17",
+      "Mentions": 60
+    },
+    {
+      "Topic": "Customer Behavior",
+      "Timeline": "2024-06-18",
+      "Mentions": 80
+    },
+    {
+      "Topic": "Background Check Delays",
+      "Timeline": "2024-10-25",
+      "Mentions": 199
+    },
+    {
+      "Topic": "App Glitches",
+      "Timeline": "2024-10-25",
+      "Mentions": 127
+    },
+    {
+      "Topic": "Fare Adjustments",
+      "Timeline": "2024-10-25",
+      "Mentions": 134
+    },
+    {
+      "Topic": "Safety Concerns",
+      "Timeline": "2024-10-25",
+      "Mentions": 91
+    },
+    {
+      "Topic": "Multi-Apping Strategies",
+      "Timeline": "2024-10-25",
+      "Mentions": 214
+    },
+    {
+      "Topic": "Vehicle Wear & Tear",
+      "Timeline": "2024-10-25",
+      "Mentions": 198
+    },
+    {
+      "Topic": "Driver Deactivations",
+      "Timeline": "2024-10-25",
+      "Mentions": 107
+    },
+    {
+      "Topic": "Airport Queue Times",
+      "Timeline": "2024-10-25",
+      "Mentions": 59
+    },
+    {
+      "Topic": "Cancellation Fees",
+      "Timeline": "2024-10-25",
+      "Mentions": 215
+    },
+    {
+      "Topic": "Maintenance Costs",
+      "Timeline": "2024-10-25",
+      "Mentions": 46
+    },
+    {
+      "Topic": "Lack of Tips",
+      "Timeline": "2024-10-25",
+      "Mentions": 117
+    },
+    {
+      "Topic": "Surge Pricing Issues",
+      "Timeline": "2024-10-25",
+      "Mentions": 111
+    },
+    {
+      "Topic": "In-App Messaging",
+      "Timeline": "2024-10-25",
+      "Mentions": 174
+    },
+    {
+      "Topic": "New Market Launches",
+      "Timeline": "2024-10-25",
+      "Mentions": 31
+    },
+    {
+      "Topic": "Rider No-Shows",
+      "Timeline": "2024-10-25",
+      "Mentions": 137
+    },
+    {
+      "Topic": "Navigation Bugs",
+      "Timeline": "2024-10-25",
+      "Mentions": 51
+    },
+    {
+      "Topic": "Destination Filters",
+      "Timeline": "2024-10-25",
+      "Mentions": 40
+    },
+    {
+      "Topic": "Insurance Concerns",
+      "Timeline": "2024-10-25",
+      "Mentions": 95
+    },
+    {
+      "Topic": "Weather Impacts",
+      "Timeline": "2024-10-25",
+      "Mentions": 178
+    },
+    {
+      "Topic": "Toll Reimbursements",
+      "Timeline": "2024-10-25",
+      "Mentions": 167
+    },
+    {
+      "Topic": "Long Pickup Distances",
+      "Timeline": "2024-11-25",
+      "Mentions": 38
+    },
+    {
+      "Topic": "Surge Pricing Issues",
+      "Timeline": "2024-11-25",
+      "Mentions": 182
+    },
+    {
+      "Topic": "Multi-Apping Strategies",
+      "Timeline": "2024-11-25",
+      "Mentions": 156
+    },
+    {
+      "Topic": "Promotions & Quests",
+      "Timeline": "2024-11-25",
+      "Mentions": 82
+    },
+    {
+      "Topic": "Airport Queue Times",
+      "Timeline": "2024-11-25",
+      "Mentions": 138
+    },
+    {
+      "Topic": "Insurance Concerns",
+      "Timeline": "2024-11-25",
+      "Mentions": 89
+    },
+    {
+      "Topic": "Driver Deactivations",
+      "Timeline": "2024-11-25",
+      "Mentions": 196
+    },
+    {
+      "Topic": "Comfort vs UberX Demand",
+      "Timeline": "2024-11-25",
+      "Mentions": 76
+    },
+    {
+      "Topic": "Fare Adjustments",
+      "Timeline": "2024-11-25",
+      "Mentions": 103
+    },
+    {
+      "Topic": "Map Rerouting",
+      "Timeline": "2024-11-25",
+      "Mentions": 218
+    },
+    {
+      "Topic": "Toll Reimbursements",
+      "Timeline": "2024-11-25",
+      "Mentions": 78
+    },
+    {
+      "Topic": "Ratings Volatility",
+      "Timeline": "2024-11-25",
+      "Mentions": 100
+    },
+    {
+      "Topic": "Support Responsiveness",
+      "Timeline": "2024-11-25",
+      "Mentions": 88
+    },
+    {
+      "Topic": "Earnings Transparency",
+      "Timeline": "2024-11-25",
+      "Mentions": 74
+    },
+    {
+      "Topic": "Cancellation Fees",
+      "Timeline": "2024-11-25",
+      "Mentions": 203
+    },
+    {
+      "Topic": "Cashless Tips",
+      "Timeline": "2024-11-25",
+      "Mentions": 74
+    },
+    {
+      "Topic": "In-App Messaging",
+      "Timeline": "2024-11-25",
+      "Mentions": 147
+    },
+    {
+      "Topic": "Parking/Drop-off Issues",
+      "Timeline": "2024-11-25",
+      "Mentions": 184
+    },
+    {
+      "Topic": "Vehicle Wear & Tear",
+      "Timeline": "2024-11-25",
+      "Mentions": 56
+    },
+    {
+      "Topic": "Destination Filters",
+      "Timeline": "2024-11-25",
+      "Mentions": 55
+    },
+    {
+      "Topic": "Earnings Transparency",
+      "Timeline": "2024-12-25",
+      "Mentions": 36
+    },
+    {
+      "Topic": "Map Rerouting",
+      "Timeline": "2024-12-25",
+      "Mentions": 117
+    },
+    {
+      "Topic": "Rider No-Shows",
+      "Timeline": "2024-12-25",
+      "Mentions": 139
+    },
+    {
+      "Topic": "Cancellation Fees",
+      "Timeline": "2024-12-25",
+      "Mentions": 84
+    },
+    {
+      "Topic": "Cashless Tips",
+      "Timeline": "2024-12-25",
+      "Mentions": 22
+    },
+    {
+      "Topic": "Delivery vs Rideshare",
+      "Timeline": "2024-12-25",
+      "Mentions": 204
+    },
+    {
+      "Topic": "Multi-Apping Strategies",
+      "Timeline": "2024-12-25",
+      "Mentions": 194
+    },
+    {
+      "Topic": "Vehicle Wear & Tear",
+      "Timeline": "2024-12-25",
+      "Mentions": 212
+    },
+    {
+      "Topic": "Weather Impacts",
+      "Timeline": "2024-12-25",
+      "Mentions": 216
+    },
+    {
+      "Topic": "Surge Pricing Issues",
+      "Timeline": "2024-12-25",
+      "Mentions": 107
+    },
+    {
+      "Topic": "Comfort vs UberX Demand",
+      "Timeline": "2024-12-25",
+      "Mentions": 95
+    },
+    {
+      "Topic": "App Glitches",
+      "Timeline": "2024-12-25",
+      "Mentions": 60
+    },
+    {
+      "Topic": "Tax/1099 Questions",
+      "Timeline": "2024-12-25",
+      "Mentions": 20
+    },
+    {
+      "Topic": "Customer Behavior",
+      "Timeline": "2024-12-25",
+      "Mentions": 204
+    },
+    {
+      "Topic": "Long Pickup Distances",
+      "Timeline": "2024-12-25",
+      "Mentions": 148
+    },
+    {
+      "Topic": "Toll Reimbursements",
+      "Timeline": "2024-12-25",
+      "Mentions": 65
+    },
+    {
+      "Topic": "Airport Queue Times",
+      "Timeline": "2024-12-25",
+      "Mentions": 47
+    },
+    {
+      "Topic": "Parking/Drop-off Issues",
+      "Timeline": "2024-12-25",
+      "Mentions": 96
+    },
+    {
+      "Topic": "Trip Stacking",
+      "Timeline": "2024-12-25",
+      "Mentions": 149
+    },
+    {
+      "Topic": "Navigation Bugs",
+      "Timeline": "2024-12-25",
+      "Mentions": 70
+    },
+    {
+      "Topic": "Delivery vs Rideshare",
+      "Timeline": "2025-01-25",
+      "Mentions": 41
+    },
+    {
+      "Topic": "EV Charging Access",
+      "Timeline": "2025-01-25",
+      "Mentions": 144
+    },
+    {
+      "Topic": "Map Rerouting",
+      "Timeline": "2025-01-25",
+      "Mentions": 214
+    },
+    {
+      "Topic": "In-App Messaging",
+      "Timeline": "2025-01-25",
+      "Mentions": 216
+    },
+    {
+      "Topic": "Lack of Tips",
+      "Timeline": "2025-01-25",
+      "Mentions": 52
+    },
+    {
+      "Topic": "Toll Reimbursements",
+      "Timeline": "2025-01-25",
+      "Mentions": 141
+    },
+    {
+      "Topic": "Weather Impacts",
+      "Timeline": "2025-01-25",
+      "Mentions": 62
+    },
+    {
+      "Topic": "App Glitches",
+      "Timeline": "2025-01-25",
+      "Mentions": 155
+    },
+    {
+      "Topic": "Background Check Delays",
+      "Timeline": "2025-01-25",
+      "Mentions": 128
+    },
+    {
+      "Topic": "Destination Filters",
+      "Timeline": "2025-01-25",
+      "Mentions": 158
+    },
+    {
+      "Topic": "Support Responsiveness",
+      "Timeline": "2025-01-25",
+      "Mentions": 206
+    },
+    {
+      "Topic": "Scheduled Rides",
+      "Timeline": "2025-01-25",
+      "Mentions": 71
+    },
+    {
+      "Topic": "Ratings Volatility",
+      "Timeline": "2025-01-25",
+      "Mentions": 99
+    },
+    {
+      "Topic": "Cashless Tips",
+      "Timeline": "2025-01-25",
+      "Mentions": 191
+    },
+    {
+      "Topic": "Fuel Prices",
+      "Timeline": "2025-01-25",
+      "Mentions": 115
+    },
+    {
+      "Topic": "Tax/1099 Questions",
+      "Timeline": "2025-01-25",
+      "Mentions": 152
+    },
+    {
+      "Topic": "Holiday Demand",
+      "Timeline": "2025-01-25",
+      "Mentions": 50
+    },
+    {
+      "Topic": "Comfort vs UberX Demand",
+      "Timeline": "2025-01-25",
+      "Mentions": 77
+    },
+    {
+      "Topic": "Promotions & Quests",
+      "Timeline": "2025-01-25",
+      "Mentions": 106
+    },
+    {
+      "Topic": "Surge Pricing Issues",
+      "Timeline": "2025-01-25",
+      "Mentions": 170
+    },
+    {
+      "Topic": "Multi-Apping Strategies",
+      "Timeline": "2025-02-25",
+      "Mentions": 205
+    },
+    {
+      "Topic": "Insurance Concerns",
+      "Timeline": "2025-02-25",
+      "Mentions": 167
+    },
+    {
+      "Topic": "New Market Launches",
+      "Timeline": "2025-02-25",
+      "Mentions": 82
+    },
+    {
+      "Topic": "Lack of Tips",
+      "Timeline": "2025-02-25",
+      "Mentions": 141
+    },
+    {
+      "Topic": "Long Pickup Distances",
+      "Timeline": "2025-02-25",
+      "Mentions": 68
+    },
+    {
+      "Topic": "Customer Behavior",
+      "Timeline": "2025-02-25",
+      "Mentions": 44
+    },
+    {
+      "Topic": "Maintenance Costs",
+      "Timeline": "2025-02-25",
+      "Mentions": 130
+    },
+    {
+      "Topic": "Earnings Transparency",
+      "Timeline": "2025-02-25",
+      "Mentions": 128
+    },
+    {
+      "Topic": "Surge Pricing Issues",
+      "Timeline": "2025-02-25",
+      "Mentions": 139
+    },
+    {
+      "Topic": "Cancellation Fees",
+      "Timeline": "2025-02-25",
+      "Mentions": 33
+    },
+    {
+      "Topic": "EV Charging Access",
+      "Timeline": "2025-02-25",
+      "Mentions": 187
+    },
+    {
+      "Topic": "Weather Impacts",
+      "Timeline": "2025-02-25",
+      "Mentions": 45
+    },
+    {
+      "Topic": "Rider No-Shows",
+      "Timeline": "2025-02-25",
+      "Mentions": 123
+    },
+    {
+      "Topic": "Background Check Delays",
+      "Timeline": "2025-02-25",
+      "Mentions": 106
+    },
+    {
+      "Topic": "Vehicle Wear & Tear",
+      "Timeline": "2025-02-25",
+      "Mentions": 83
+    },
+    {
+      "Topic": "Parking/Drop-off Issues",
+      "Timeline": "2025-02-25",
+      "Mentions": 68
+    },
+    {
+      "Topic": "Safety Concerns",
+      "Timeline": "2025-02-25",
+      "Mentions": 134
+    },
+    {
+      "Topic": "Driver Deactivations",
+      "Timeline": "2025-02-25",
+      "Mentions": 128
+    },
+    {
+      "Topic": "Fare Adjustments",
+      "Timeline": "2025-02-25",
+      "Mentions": 91
+    },
+    {
+      "Topic": "Holiday Demand",
+      "Timeline": "2025-02-25",
+      "Mentions": 83
+    },
+    {
+      "Topic": "Scheduled Rides",
+      "Timeline": "2025-03-25",
+      "Mentions": 220
+    },
+    {
+      "Topic": "Earnings Transparency",
+      "Timeline": "2025-03-25",
+      "Mentions": 136
+    },
+    {
+      "Topic": "Driver Deactivations",
+      "Timeline": "2025-03-25",
+      "Mentions": 128
+    },
+    {
+      "Topic": "Customer Behavior",
+      "Timeline": "2025-03-25",
+      "Mentions": 207
+    },
+    {
+      "Topic": "Map Rerouting",
+      "Timeline": "2025-03-25",
+      "Mentions": 162
+    },
+    {
+      "Topic": "Lack of Tips",
+      "Timeline": "2025-03-25",
+      "Mentions": 203
+    },
+    {
+      "Topic": "Airport Queue Times",
+      "Timeline": "2025-03-25",
+      "Mentions": 59
+    },
+    {
+      "Topic": "Safety Concerns",
+      "Timeline": "2025-03-25",
+      "Mentions": 95
+    },
+    {
+      "Topic": "EV Charging Access",
+      "Timeline": "2025-03-25",
+      "Mentions": 34
+    },
+    {
+      "Topic": "Trip Stacking",
+      "Timeline": "2025-03-25",
+      "Mentions": 208
+    },
+    {
+      "Topic": "Holiday Demand",
+      "Timeline": "2025-03-25",
+      "Mentions": 35
+    },
+    {
+      "Topic": "Destination Filters",
+      "Timeline": "2025-03-25",
+      "Mentions": 100
+    },
+    {
+      "Topic": "Insurance Concerns",
+      "Timeline": "2025-03-25",
+      "Mentions": 32
+    },
+    {
+      "Topic": "Upfront Fares",
+      "Timeline": "2025-03-25",
+      "Mentions": 142
+    },
+    {
+      "Topic": "App Glitches",
+      "Timeline": "2025-03-25",
+      "Mentions": 155
+    },
+    {
+      "Topic": "In-App Messaging",
+      "Timeline": "2025-03-25",
+      "Mentions": 34
+    },
+    {
+      "Topic": "Ratings Volatility",
+      "Timeline": "2025-03-25",
+      "Mentions": 40
+    },
+    {
+      "Topic": "Maintenance Costs",
+      "Timeline": "2025-03-25",
+      "Mentions": 37
+    },
+    {
+      "Topic": "Delivery vs Rideshare",
+      "Timeline": "2025-03-25",
+      "Mentions": 37
+    },
+    {
+      "Topic": "Vehicle Wear & Tear",
+      "Timeline": "2025-03-25",
+      "Mentions": 80
+    },
+    {
+      "Topic": "Background Check Delays",
+      "Timeline": "2025-04-25",
+      "Mentions": 137
+    },
+    {
+      "Topic": "Tax/1099 Questions",
+      "Timeline": "2025-04-25",
+      "Mentions": 212
+    },
+    {
+      "Topic": "Safety Concerns",
+      "Timeline": "2025-04-25",
+      "Mentions": 22
+    },
+    {
+      "Topic": "Surge Pricing Issues",
+      "Timeline": "2025-04-25",
+      "Mentions": 179
+    },
+    {
+      "Topic": "Airport Queue Times",
+      "Timeline": "2025-04-25",
+      "Mentions": 45
+    },
+    {
+      "Topic": "Ratings Volatility",
+      "Timeline": "2025-04-25",
+      "Mentions": 157
+    },
+    {
+      "Topic": "In-App Messaging",
+      "Timeline": "2025-04-25",
+      "Mentions": 149
+    },
+    {
+      "Topic": "Toll Reimbursements",
+      "Timeline": "2025-04-25",
+      "Mentions": 53
+    },
+    {
+      "Topic": "Rider No-Shows",
+      "Timeline": "2025-04-25",
+      "Mentions": 37
+    },
+    {
+      "Topic": "Driver Deactivations",
+      "Timeline": "2025-04-25",
+      "Mentions": 114
+    },
+    {
+      "Topic": "Parking/Drop-off Issues",
+      "Timeline": "2025-04-25",
+      "Mentions": 60
+    },
+    {
+      "Topic": "Lost Item Fees",
+      "Timeline": "2025-04-25",
+      "Mentions": 159
+    },
+    {
+      "Topic": "EV Charging Access",
+      "Timeline": "2025-04-25",
+      "Mentions": 97
+    },
+    {
+      "Topic": "New Market Launches",
+      "Timeline": "2025-04-25",
+      "Mentions": 187
+    },
+    {
+      "Topic": "Vehicle Wear & Tear",
+      "Timeline": "2025-04-25",
+      "Mentions": 22
+    },
+    {
+      "Topic": "Upfront Fares",
+      "Timeline": "2025-04-25",
+      "Mentions": 161
+    },
+    {
+      "Topic": "Long Pickup Distances",
+      "Timeline": "2025-04-25",
+      "Mentions": 189
+    },
+    {
+      "Topic": "Destination Filters",
+      "Timeline": "2025-04-25",
+      "Mentions": 54
+    },
+    {
+      "Topic": "Holiday Demand",
+      "Timeline": "2025-04-25",
+      "Mentions": 49
+    },
+    {
+      "Topic": "Fuel Prices",
+      "Timeline": "2025-04-25",
+      "Mentions": 210
+    },
+    {
+      "Topic": "Fuel Prices",
+      "Timeline": "2025-05-25",
+      "Mentions": 217
+    },
+    {
+      "Topic": "Fare Adjustments",
+      "Timeline": "2025-05-25",
+      "Mentions": 183
+    },
+    {
+      "Topic": "Promotions & Quests",
+      "Timeline": "2025-05-25",
+      "Mentions": 61
+    },
+    {
+      "Topic": "Trip Stacking",
+      "Timeline": "2025-05-25",
+      "Mentions": 133
+    },
+    {
+      "Topic": "Parking/Drop-off Issues",
+      "Timeline": "2025-05-25",
+      "Mentions": 200
+    },
+    {
+      "Topic": "Tax/1099 Questions",
+      "Timeline": "2025-05-25",
+      "Mentions": 163
+    },
+    {
+      "Topic": "Rider No-Shows",
+      "Timeline": "2025-05-25",
+      "Mentions": 48
+    },
+    {
+      "Topic": "Holiday Demand",
+      "Timeline": "2025-05-25",
+      "Mentions": 196
+    },
+    {
+      "Topic": "Weather Impacts",
+      "Timeline": "2025-05-25",
+      "Mentions": 159
+    },
+    {
+      "Topic": "Vehicle Wear & Tear",
+      "Timeline": "2025-05-25",
+      "Mentions": 114
+    },
+    {
+      "Topic": "Scheduled Rides",
+      "Timeline": "2025-05-25",
+      "Mentions": 161
+    },
+    {
+      "Topic": "Cancellation Fees",
+      "Timeline": "2025-05-25",
+      "Mentions": 130
+    },
+    {
+      "Topic": "App Glitches",
+      "Timeline": "2025-05-25",
+      "Mentions": 30
+    },
+    {
+      "Topic": "Surge Pricing Issues",
+      "Timeline": "2025-05-25",
+      "Mentions": 113
+    },
+    {
+      "Topic": "Toll Reimbursements",
+      "Timeline": "2025-05-25",
+      "Mentions": 30
+    },
+    {
+      "Topic": "Map Rerouting",
+      "Timeline": "2025-05-25",
+      "Mentions": 73
+    },
+    {
+      "Topic": "Night Shift Patterns",
+      "Timeline": "2025-05-25",
+      "Mentions": 83
+    },
+    {
+      "Topic": "Destination Filters",
+      "Timeline": "2025-05-25",
+      "Mentions": 46
+    },
+    {
+      "Topic": "Lack of Tips",
+      "Timeline": "2025-05-25",
+      "Mentions": 219
+    },
+    {
+      "Topic": "EV Charging Access",
+      "Timeline": "2025-05-25",
+      "Mentions": 124
+    },
+    {
+      "Topic": "Fuel Prices",
+      "Timeline": "2025-06-25",
+      "Mentions": 29
+    },
+    {
+      "Topic": "Safety Concerns",
+      "Timeline": "2025-06-25",
+      "Mentions": 76
+    },
+    {
+      "Topic": "EV Charging Access",
+      "Timeline": "2025-06-25",
+      "Mentions": 137
+    },
+    {
+      "Topic": "Support Responsiveness",
+      "Timeline": "2025-06-25",
+      "Mentions": 98
+    },
+    {
+      "Topic": "Ratings Volatility",
+      "Timeline": "2025-06-25",
+      "Mentions": 78
+    },
+    {
+      "Topic": "App Glitches",
+      "Timeline": "2025-06-25",
+      "Mentions": 26
+    },
+    {
+      "Topic": "Tax/1099 Questions",
+      "Timeline": "2025-06-25",
+      "Mentions": 69
+    },
+    {
+      "Topic": "Parking/Drop-off Issues",
+      "Timeline": "2025-06-25",
+      "Mentions": 104
+    },
+    {
+      "Topic": "Earnings Transparency",
+      "Timeline": "2025-06-25",
+      "Mentions": 37
+    },
+    {
+      "Topic": "Cashless Tips",
+      "Timeline": "2025-06-25",
+      "Mentions": 91
+    },
+    {
+      "Topic": "Holiday Demand",
+      "Timeline": "2025-06-25",
+      "Mentions": 184
+    },
+    {
+      "Topic": "Cancellation Fees",
+      "Timeline": "2025-06-25",
+      "Mentions": 122
+    },
+    {
+      "Topic": "Delivery vs Rideshare",
+      "Timeline": "2025-06-25",
+      "Mentions": 157
+    },
+    {
+      "Topic": "Night Shift Patterns",
+      "Timeline": "2025-06-25",
+      "Mentions": 27
+    },
+    {
+      "Topic": "Background Check Delays",
+      "Timeline": "2025-06-25",
+      "Mentions": 86
+    },
+    {
+      "Topic": "Vehicle Wear & Tear",
+      "Timeline": "2025-06-25",
+      "Mentions": 168
+    },
+    {
+      "Topic": "Airport Queue Times",
+      "Timeline": "2025-06-25",
+      "Mentions": 29
+    },
+    {
+      "Topic": "Lost Item Fees",
+      "Timeline": "2025-06-25",
+      "Mentions": 172
+    },
+    {
+      "Topic": "Customer Behavior",
+      "Timeline": "2025-06-25",
+      "Mentions": 108
+    },
+    {
+      "Topic": "Upfront Fares",
+      "Timeline": "2025-06-25",
+      "Mentions": 100
+    },
+    {
+      "Topic": "Maintenance Costs",
+      "Timeline": "2025-07-25",
+      "Mentions": 130
+    },
+    {
+      "Topic": "Holiday Demand",
+      "Timeline": "2025-07-25",
+      "Mentions": 190
+    },
+    {
+      "Topic": "Background Check Delays",
+      "Timeline": "2025-07-25",
+      "Mentions": 179
+    },
+    {
+      "Topic": "Comfort vs UberX Demand",
+      "Timeline": "2025-07-25",
+      "Mentions": 189
+    },
+    {
+      "Topic": "Upfront Fares",
+      "Timeline": "2025-07-25",
+      "Mentions": 204
+    },
+    {
+      "Topic": "Rider No-Shows",
+      "Timeline": "2025-07-25",
+      "Mentions": 149
+    },
+    {
+      "Topic": "Surge Pricing Issues",
+      "Timeline": "2025-07-25",
+      "Mentions": 190
+    },
+    {
+      "Topic": "Cancellation Fees",
+      "Timeline": "2025-07-25",
+      "Mentions": 103
+    },
+    {
+      "Topic": "Lack of Tips",
+      "Timeline": "2025-07-25",
+      "Mentions": 198
+    },
+    {
+      "Topic": "Map Rerouting",
+      "Timeline": "2025-07-25",
+      "Mentions": 161
+    },
+    {
+      "Topic": "Destination Filters",
+      "Timeline": "2025-07-25",
+      "Mentions": 69
+    },
+    {
+      "Topic": "Cashless Tips",
+      "Timeline": "2025-07-25",
+      "Mentions": 190
+    },
+    {
+      "Topic": "Fare Adjustments",
+      "Timeline": "2025-07-25",
+      "Mentions": 193
+    },
+    {
+      "Topic": "Parking/Drop-off Issues",
+      "Timeline": "2025-07-25",
+      "Mentions": 64
+    },
+    {
+      "Topic": "Delivery vs Rideshare",
+      "Timeline": "2025-07-25",
+      "Mentions": 165
+    },
+    {
+      "Topic": "Scheduled Rides",
+      "Timeline": "2025-07-25",
+      "Mentions": 123
+    },
+    {
+      "Topic": "Tax/1099 Questions",
+      "Timeline": "2025-07-25",
+      "Mentions": 20
+    },
+    {
+      "Topic": "Ratings Volatility",
+      "Timeline": "2025-07-25",
+      "Mentions": 93
+    },
+    {
+      "Topic": "Driver Deactivations",
+      "Timeline": "2025-07-25",
+      "Mentions": 130
+    },
+    {
+      "Topic": "Support Responsiveness",
+      "Timeline": "2025-07-25",
+      "Mentions": 168
+    },
+    {
+      "Topic": "Toll Reimbursements",
+      "Timeline": "2025-08-25",
+      "Mentions": 70
+    },
+    {
+      "Topic": "Destination Filters",
+      "Timeline": "2025-08-25",
+      "Mentions": 26
+    },
+    {
+      "Topic": "Scheduled Rides",
+      "Timeline": "2025-08-25",
+      "Mentions": 82
+    },
+    {
+      "Topic": "Insurance Concerns",
+      "Timeline": "2025-08-25",
+      "Mentions": 176
+    },
+    {
+      "Topic": "Trip Stacking",
+      "Timeline": "2025-08-25",
+      "Mentions": 38
+    },
+    {
+      "Topic": "Holiday Demand",
+      "Timeline": "2025-08-25",
+      "Mentions": 126
+    },
+    {
+      "Topic": "Night Shift Patterns",
+      "Timeline": "2025-08-25",
+      "Mentions": 167
+    },
+    {
+      "Topic": "EV Charging Access",
+      "Timeline": "2025-08-25",
+      "Mentions": 203
+    },
+    {
+      "Topic": "Airport Queue Times",
+      "Timeline": "2025-08-25",
+      "Mentions": 118
+    },
+    {
+      "Topic": "Fuel Prices",
+      "Timeline": "2025-08-25",
+      "Mentions": 122
+    },
+    {
+      "Topic": "Rider No-Shows",
+      "Timeline": "2025-08-25",
+      "Mentions": 57
+    },
+    {
+      "Topic": "Parking/Drop-off Issues",
+      "Timeline": "2025-08-25",
+      "Mentions": 196
+    },
+    {
+      "Topic": "New Market Launches",
+      "Timeline": "2025-08-25",
+      "Mentions": 212
+    },
+    {
+      "Topic": "Navigation Bugs",
+      "Timeline": "2025-08-25",
+      "Mentions": 47
+    },
+    {
+      "Topic": "Map Rerouting",
+      "Timeline": "2025-08-25",
+      "Mentions": 128
+    },
+    {
+      "Topic": "Surge Pricing Issues",
+      "Timeline": "2025-08-25",
+      "Mentions": 65
+    },
+    {
+      "Topic": "Background Check Delays",
+      "Timeline": "2025-08-25",
+      "Mentions": 152
+    },
+    {
+      "Topic": "Tax/1099 Questions",
+      "Timeline": "2025-08-25",
+      "Mentions": 32
+    },
+    {
+      "Topic": "In-App Messaging",
+      "Timeline": "2025-08-25",
+      "Mentions": 83
+    },
+    {
+      "Topic": "Delivery vs Rideshare",
+      "Timeline": "2025-08-25",
+      "Mentions": 136
+    },
+    {
+      "Topic": "Destination Filters",
+      "Timeline": "2025-09-25",
+      "Mentions": 180
+    },
+    {
+      "Topic": "In-App Messaging",
+      "Timeline": "2025-09-25",
+      "Mentions": 90
+    },
+    {
+      "Topic": "Earnings Transparency",
+      "Timeline": "2025-09-25",
+      "Mentions": 39
+    },
+    {
+      "Topic": "Toll Reimbursements",
+      "Timeline": "2025-09-25",
+      "Mentions": 93
+    },
+    {
+      "Topic": "Scheduled Rides",
+      "Timeline": "2025-09-25",
+      "Mentions": 89
+    },
+    {
+      "Topic": "Holiday Demand",
+      "Timeline": "2025-09-25",
+      "Mentions": 101
+    },
+    {
+      "Topic": "Cancellation Fees",
+      "Timeline": "2025-09-25",
+      "Mentions": 40
+    },
+    {
+      "Topic": "Insurance Concerns",
+      "Timeline": "2025-09-25",
+      "Mentions": 58
+    },
+    {
+      "Topic": "EV Charging Access",
+      "Timeline": "2025-09-25",
+      "Mentions": 118
+    },
+    {
+      "Topic": "Delivery vs Rideshare",
+      "Timeline": "2025-09-25",
+      "Mentions": 59
+    },
+    {
+      "Topic": "Maintenance Costs",
+      "Timeline": "2025-09-25",
+      "Mentions": 74
+    },
+    {
+      "Topic": "Safety Concerns",
+      "Timeline": "2025-09-25",
+      "Mentions": 126
+    },
+    {
+      "Topic": "Multi-Apping Strategies",
+      "Timeline": "2025-09-25",
+      "Mentions": 104
+    },
+    {
+      "Topic": "Vehicle Wear & Tear",
+      "Timeline": "2025-09-25",
+      "Mentions": 139
+    },
+    {
+      "Topic": "Comfort vs UberX Demand",
+      "Timeline": "2025-09-25",
+      "Mentions": 35
+    },
+    {
+      "Topic": "Background Check Delays",
+      "Timeline": "2025-09-25",
+      "Mentions": 127
+    },
+    {
+      "Topic": "Tax/1099 Questions",
+      "Timeline": "2025-09-25",
+      "Mentions": 217
+    },
+    {
+      "Topic": "Ratings Volatility",
+      "Timeline": "2025-09-25",
+      "Mentions": 198
+    },
+    {
+      "Topic": "Rider No-Shows",
+      "Timeline": "2025-09-25",
+      "Mentions": 215
+    },
+    {
+      "Topic": "Map Rerouting",
+      "Timeline": "2025-09-25",
+      "Mentions": 117
+    },
+    {
+      "Topic": "Lack of Tips",
+      "Timeline": "2025-10-25",
+      "Mentions": 52
+    },
+    {
+      "Topic": "Lost Item Fees",
+      "Timeline": "2025-10-25",
+      "Mentions": 156
+    },
+    {
+      "Topic": "Navigation Bugs",
+      "Timeline": "2025-10-25",
+      "Mentions": 120
+    },
+    {
+      "Topic": "Comfort vs UberX Demand",
+      "Timeline": "2025-10-25",
+      "Mentions": 164
+    },
+    {
+      "Topic": "Ratings Volatility",
+      "Timeline": "2025-10-25",
+      "Mentions": 26
+    },
+    {
+      "Topic": "Map Rerouting",
+      "Timeline": "2025-10-25",
+      "Mentions": 184
+    },
+    {
+      "Topic": "Multi-Apping Strategies",
+      "Timeline": "2025-10-25",
+      "Mentions": 54
+    },
+    {
+      "Topic": "Weather Impacts",
+      "Timeline": "2025-10-25",
+      "Mentions": 66
+    },
+    {
+      "Topic": "In-App Messaging",
+      "Timeline": "2025-10-25",
+      "Mentions": 86
+    },
+    {
+      "Topic": "Vehicle Wear & Tear",
+      "Timeline": "2025-10-25",
+      "Mentions": 103
+    },
+    {
+      "Topic": "Trip Stacking",
+      "Timeline": "2025-10-25",
+      "Mentions": 136
+    },
+    {
+      "Topic": "Safety Concerns",
+      "Timeline": "2025-10-25",
+      "Mentions": 106
+    },
+    {
+      "Topic": "New Market Launches",
+      "Timeline": "2025-10-25",
+      "Mentions": 117
+    },
+    {
+      "Topic": "Upfront Fares",
+      "Timeline": "2025-10-25",
+      "Mentions": 212
+    },
+    {
+      "Topic": "EV Charging Access",
+      "Timeline": "2025-10-25",
+      "Mentions": 84
+    },
+    {
+      "Topic": "Parking/Drop-off Issues",
+      "Timeline": "2025-10-25",
+      "Mentions": 140
+    },
+    {
+      "Topic": "Tax/1099 Questions",
+      "Timeline": "2025-10-25",
+      "Mentions": 211
+    },
+    {
+      "Topic": "Earnings Transparency",
+      "Timeline": "2025-10-25",
+      "Mentions": 33
+    },
+    {
+      "Topic": "Airport Queue Times",
+      "Timeline": "2025-10-25",
+      "Mentions": 77
+    },
+    {
+      "Topic": "Holiday Demand",
+      "Timeline": "2025-10-25",
+      "Mentions": 37
+    }
+  ],
+  "Adjusted_Insights": [
+    {
+      "Topic": "Lack of Tips",
+      "Timeline": "2024-06-15",
+      "Mentions": 35
+    },
+    {
+      "Topic": "App Glitches",
+      "Timeline": "2024-06-16",
+      "Mentions": 45
+    },
+    {
+      "Topic": "Surge Pricing Issues",
+      "Timeline": "2024-06-17",
+      "Mentions": 60
+    },
+    {
+      "Topic": "Customer Behavior",
+      "Timeline": "2024-06-18",
+      "Mentions": 65
+    },
+    {
+      "Topic": "Background Check Delays",
+      "Timeline": "2024-10-25",
+      "Mentions": 203
+    },
+    {
+      "Topic": "App Glitches",
+      "Timeline": "2024-10-25",
+      "Mentions": 111
+    },
+    {
+      "Topic": "Fare Adjustments",
+      "Timeline": "2024-10-25",
+      "Mentions": 141
+    },
+    {
+      "Topic": "Safety Concerns",
+      "Timeline": "2024-10-25",
+      "Mentions": 61
+    },
+    {
+      "Topic": "Multi-Apping Strategies",
+      "Timeline": "2024-10-25",
+      "Mentions": 194
+    },
+    {
+      "Topic": "Vehicle Wear & Tear",
+      "Timeline": "2024-10-25",
+      "Mentions": 195
+    },
+    {
+      "Topic": "Driver Deactivations",
+      "Timeline": "2024-10-25",
+      "Mentions": 94
+    },
+    {
+      "Topic": "Airport Queue Times",
+      "Timeline": "2024-10-25",
+      "Mentions": 42
+    },
+    {
+      "Topic": "Cancellation Fees",
+      "Timeline": "2024-10-25",
+      "Mentions": 206
+    },
+    {
+      "Topic": "Maintenance Costs",
+      "Timeline": "2024-10-25",
+      "Mentions": 21
+    },
+    {
+      "Topic": "Lack of Tips",
+      "Timeline": "2024-10-25",
+      "Mentions": 93
+    },
+    {
+      "Topic": "Surge Pricing Issues",
+      "Timeline": "2024-10-25",
+      "Mentions": 103
+    },
+    {
+      "Topic": "In-App Messaging",
+      "Timeline": "2024-10-25",
+      "Mentions": 160
+    },
+    {
+      "Topic": "New Market Launches",
+      "Timeline": "2024-10-25",
+      "Mentions": 47
+    },
+    {
+      "Topic": "Rider No-Shows",
+      "Timeline": "2024-10-25",
+      "Mentions": 141
+    },
+    {
+      "Topic": "Navigation Bugs",
+      "Timeline": "2024-10-25",
+      "Mentions": 45
+    },
+    {
+      "Topic": "Destination Filters",
+      "Timeline": "2024-10-25",
+      "Mentions": 45
+    },
+    {
+      "Topic": "Insurance Concerns",
+      "Timeline": "2024-10-25",
+      "Mentions": 105
+    },
+    {
+      "Topic": "Weather Impacts",
+      "Timeline": "2024-10-25",
+      "Mentions": 171
+    },
+    {
+      "Topic": "Toll Reimbursements",
+      "Timeline": "2024-10-25",
+      "Mentions": 149
+    },
+    {
+      "Topic": "Long Pickup Distances",
+      "Timeline": "2024-11-25",
+      "Mentions": 46
+    },
+    {
+      "Topic": "Surge Pricing Issues",
+      "Timeline": "2024-11-25",
+      "Mentions": 162
+    },
+    {
+      "Topic": "Multi-Apping Strategies",
+      "Timeline": "2024-11-25",
+      "Mentions": 172
+    },
+    {
+      "Topic": "Promotions & Quests",
+      "Timeline": "2024-11-25",
+      "Mentions": 62
+    },
+    {
+      "Topic": "Airport Queue Times",
+      "Timeline": "2024-11-25",
+      "Mentions": 132
+    },
+    {
+      "Topic": "Insurance Concerns",
+      "Timeline": "2024-11-25",
+      "Mentions": 99
+    },
+    {
+      "Topic": "Driver Deactivations",
+      "Timeline": "2024-11-25",
+      "Mentions": 201
+    },
+    {
+      "Topic": "Comfort vs UberX Demand",
+      "Timeline": "2024-11-25",
+      "Mentions": 89
+    },
+    {
+      "Topic": "Fare Adjustments",
+      "Timeline": "2024-11-25",
+      "Mentions": 122
+    },
+    {
+      "Topic": "Map Rerouting",
+      "Timeline": "2024-11-25",
+      "Mentions": 191
+    },
+    {
+      "Topic": "Toll Reimbursements",
+      "Timeline": "2024-11-25",
+      "Mentions": 50
+    },
+    {
+      "Topic": "Ratings Volatility",
+      "Timeline": "2024-11-25",
+      "Mentions": 95
+    },
+    {
+      "Topic": "Support Responsiveness",
+      "Timeline": "2024-11-25",
+      "Mentions": 62
+    },
+    {
+      "Topic": "Earnings Transparency",
+      "Timeline": "2024-11-25",
+      "Mentions": 80
+    },
+    {
+      "Topic": "Cancellation Fees",
+      "Timeline": "2024-11-25",
+      "Mentions": 193
+    },
+    {
+      "Topic": "Cashless Tips",
+      "Timeline": "2024-11-25",
+      "Mentions": 85
+    },
+    {
+      "Topic": "In-App Messaging",
+      "Timeline": "2024-11-25",
+      "Mentions": 142
+    },
+    {
+      "Topic": "Parking/Drop-off Issues",
+      "Timeline": "2024-11-25",
+      "Mentions": 183
+    },
+    {
+      "Topic": "Vehicle Wear & Tear",
+      "Timeline": "2024-11-25",
+      "Mentions": 42
+    },
+    {
+      "Topic": "Destination Filters",
+      "Timeline": "2024-11-25",
+      "Mentions": 40
+    },
+    {
+      "Topic": "Earnings Transparency",
+      "Timeline": "2024-12-25",
+      "Mentions": 30
+    },
+    {
+      "Topic": "Map Rerouting",
+      "Timeline": "2024-12-25",
+      "Mentions": 125
+    },
+    {
+      "Topic": "Rider No-Shows",
+      "Timeline": "2024-12-25",
+      "Mentions": 142
+    },
+    {
+      "Topic": "Cancellation Fees",
+      "Timeline": "2024-12-25",
+      "Mentions": 89
+    },
+    {
+      "Topic": "Cashless Tips",
+      "Timeline": "2024-12-25",
+      "Mentions": 35
+    },
+    {
+      "Topic": "Delivery vs Rideshare",
+      "Timeline": "2024-12-25",
+      "Mentions": 181
+    },
+    {
+      "Topic": "Multi-Apping Strategies",
+      "Timeline": "2024-12-25",
+      "Mentions": 198
+    },
+    {
+      "Topic": "Vehicle Wear & Tear",
+      "Timeline": "2024-12-25",
+      "Mentions": 199
+    },
+    {
+      "Topic": "Weather Impacts",
+      "Timeline": "2024-12-25",
+      "Mentions": 227
+    },
+    {
+      "Topic": "Surge Pricing Issues",
+      "Timeline": "2024-12-25",
+      "Mentions": 84
+    },
+    {
+      "Topic": "Comfort vs UberX Demand",
+      "Timeline": "2024-12-25",
+      "Mentions": 92
+    },
+    {
+      "Topic": "App Glitches",
+      "Timeline": "2024-12-25",
+      "Mentions": 59
+    },
+    {
+      "Topic": "Tax/1099 Questions",
+      "Timeline": "2024-12-25",
+      "Mentions": 36
+    },
+    {
+      "Topic": "Customer Behavior",
+      "Timeline": "2024-12-25",
+      "Mentions": 190
+    },
+    {
+      "Topic": "Long Pickup Distances",
+      "Timeline": "2024-12-25",
+      "Mentions": 166
+    },
+    {
+      "Topic": "Toll Reimbursements",
+      "Timeline": "2024-12-25",
+      "Mentions": 67
+    },
+    {
+      "Topic": "Airport Queue Times",
+      "Timeline": "2024-12-25",
+      "Mentions": 57
+    },
+    {
+      "Topic": "Parking/Drop-off Issues",
+      "Timeline": "2024-12-25",
+      "Mentions": 106
+    },
+    {
+      "Topic": "Trip Stacking",
+      "Timeline": "2024-12-25",
+      "Mentions": 157
+    },
+    {
+      "Topic": "Navigation Bugs",
+      "Timeline": "2024-12-25",
+      "Mentions": 49
+    },
+    {
+      "Topic": "Delivery vs Rideshare",
+      "Timeline": "2025-01-25",
+      "Mentions": 57
+    },
+    {
+      "Topic": "EV Charging Access",
+      "Timeline": "2025-01-25",
+      "Mentions": 118
+    },
+    {
+      "Topic": "Map Rerouting",
+      "Timeline": "2025-01-25",
+      "Mentions": 218
+    },
+    {
+      "Topic": "In-App Messaging",
+      "Timeline": "2025-01-25",
+      "Mentions": 194
+    },
+    {
+      "Topic": "Lack of Tips",
+      "Timeline": "2025-01-25",
+      "Mentions": 64
+    },
+    {
+      "Topic": "Toll Reimbursements",
+      "Timeline": "2025-01-25",
+      "Mentions": 146
+    },
+    {
+      "Topic": "Weather Impacts",
+      "Timeline": "2025-01-25",
+      "Mentions": 48
+    },
+    {
+      "Topic": "App Glitches",
+      "Timeline": "2025-01-25",
+      "Mentions": 163
+    },
+    {
+      "Topic": "Background Check Delays",
+      "Timeline": "2025-01-25",
+      "Mentions": 111
+    },
+    {
+      "Topic": "Destination Filters",
+      "Timeline": "2025-01-25",
+      "Mentions": 176
+    },
+    {
+      "Topic": "Support Responsiveness",
+      "Timeline": "2025-01-25",
+      "Mentions": 220
+    },
+    {
+      "Topic": "Scheduled Rides",
+      "Timeline": "2025-01-25",
+      "Mentions": 86
+    },
+    {
+      "Topic": "Ratings Volatility",
+      "Timeline": "2025-01-25",
+      "Mentions": 94
+    },
+    {
+      "Topic": "Cashless Tips",
+      "Timeline": "2025-01-25",
+      "Mentions": 202
+    },
+    {
+      "Topic": "Fuel Prices",
+      "Timeline": "2025-01-25",
+      "Mentions": 113
+    },
+    {
+      "Topic": "Tax/1099 Questions",
+      "Timeline": "2025-01-25",
+      "Mentions": 150
+    },
+    {
+      "Topic": "Holiday Demand",
+      "Timeline": "2025-01-25",
+      "Mentions": 35
+    },
+    {
+      "Topic": "Comfort vs UberX Demand",
+      "Timeline": "2025-01-25",
+      "Mentions": 51
+    },
+    {
+      "Topic": "Promotions & Quests",
+      "Timeline": "2025-01-25",
+      "Mentions": 77
+    },
+    {
+      "Topic": "Surge Pricing Issues",
+      "Timeline": "2025-01-25",
+      "Mentions": 175
+    },
+    {
+      "Topic": "Multi-Apping Strategies",
+      "Timeline": "2025-02-25",
+      "Mentions": 211
+    },
+    {
+      "Topic": "Insurance Concerns",
+      "Timeline": "2025-02-25",
+      "Mentions": 167
+    },
+    {
+      "Topic": "New Market Launches",
+      "Timeline": "2025-02-25",
+      "Mentions": 102
+    },
+    {
+      "Topic": "Lack of Tips",
+      "Timeline": "2025-02-25",
+      "Mentions": 137
+    },
+    {
+      "Topic": "Long Pickup Distances",
+      "Timeline": "2025-02-25",
+      "Mentions": 44
+    },
+    {
+      "Topic": "Customer Behavior",
+      "Timeline": "2025-02-25",
+      "Mentions": 56
+    },
+    {
+      "Topic": "Maintenance Costs",
+      "Timeline": "2025-02-25",
+      "Mentions": 122
+    },
+    {
+      "Topic": "Earnings Transparency",
+      "Timeline": "2025-02-25",
+      "Mentions": 124
+    },
+    {
+      "Topic": "Surge Pricing Issues",
+      "Timeline": "2025-02-25",
+      "Mentions": 155
+    },
+    {
+      "Topic": "Cancellation Fees",
+      "Timeline": "2025-02-25",
+      "Mentions": 46
+    },
+    {
+      "Topic": "EV Charging Access",
+      "Timeline": "2025-02-25",
+      "Mentions": 198
+    },
+    {
+      "Topic": "Weather Impacts",
+      "Timeline": "2025-02-25",
+      "Mentions": 18
+    },
+    {
+      "Topic": "Rider No-Shows",
+      "Timeline": "2025-02-25",
+      "Mentions": 139
+    },
+    {
+      "Topic": "Background Check Delays",
+      "Timeline": "2025-02-25",
+      "Mentions": 82
+    },
+    {
+      "Topic": "Vehicle Wear & Tear",
+      "Timeline": "2025-02-25",
+      "Mentions": 65
+    },
+    {
+      "Topic": "Parking/Drop-off Issues",
+      "Timeline": "2025-02-25",
+      "Mentions": 72
+    },
+    {
+      "Topic": "Safety Concerns",
+      "Timeline": "2025-02-25",
+      "Mentions": 112
+    },
+    {
+      "Topic": "Driver Deactivations",
+      "Timeline": "2025-02-25",
+      "Mentions": 109
+    },
+    {
+      "Topic": "Fare Adjustments",
+      "Timeline": "2025-02-25",
+      "Mentions": 90
+    },
+    {
+      "Topic": "Holiday Demand",
+      "Timeline": "2025-02-25",
+      "Mentions": 57
+    },
+    {
+      "Topic": "Scheduled Rides",
+      "Timeline": "2025-03-25",
+      "Mentions": 240
+    },
+    {
+      "Topic": "Earnings Transparency",
+      "Timeline": "2025-03-25",
+      "Mentions": 124
+    },
+    {
+      "Topic": "Driver Deactivations",
+      "Timeline": "2025-03-25",
+      "Mentions": 142
+    },
+    {
+      "Topic": "Customer Behavior",
+      "Timeline": "2025-03-25",
+      "Mentions": 227
+    },
+    {
+      "Topic": "Map Rerouting",
+      "Timeline": "2025-03-25",
+      "Mentions": 174
+    },
+    {
+      "Topic": "Lack of Tips",
+      "Timeline": "2025-03-25",
+      "Mentions": 204
+    },
+    {
+      "Topic": "Airport Queue Times",
+      "Timeline": "2025-03-25",
+      "Mentions": 41
+    },
+    {
+      "Topic": "Safety Concerns",
+      "Timeline": "2025-03-25",
+      "Mentions": 78
+    },
+    {
+      "Topic": "EV Charging Access",
+      "Timeline": "2025-03-25",
+      "Mentions": 41
+    },
+    {
+      "Topic": "Trip Stacking",
+      "Timeline": "2025-03-25",
+      "Mentions": 212
+    },
+    {
+      "Topic": "Holiday Demand",
+      "Timeline": "2025-03-25",
+      "Mentions": 52
+    },
+    {
+      "Topic": "Destination Filters",
+      "Timeline": "2025-03-25",
+      "Mentions": 73
+    },
+    {
+      "Topic": "Insurance Concerns",
+      "Timeline": "2025-03-25",
+      "Mentions": 39
+    },
+    {
+      "Topic": "Upfront Fares",
+      "Timeline": "2025-03-25",
+      "Mentions": 144
+    },
+    {
+      "Topic": "App Glitches",
+      "Timeline": "2025-03-25",
+      "Mentions": 135
+    },
+    {
+      "Topic": "In-App Messaging",
+      "Timeline": "2025-03-25",
+      "Mentions": 36
+    },
+    {
+      "Topic": "Ratings Volatility",
+      "Timeline": "2025-03-25",
+      "Mentions": 21
+    },
+    {
+      "Topic": "Maintenance Costs",
+      "Timeline": "2025-03-25",
+      "Mentions": 45
+    },
+    {
+      "Topic": "Delivery vs Rideshare",
+      "Timeline": "2025-03-25",
+      "Mentions": 50
+    },
+    {
+      "Topic": "Vehicle Wear & Tear",
+      "Timeline": "2025-03-25",
+      "Mentions": 75
+    },
+    {
+      "Topic": "Background Check Delays",
+      "Timeline": "2025-04-25",
+      "Mentions": 127
+    },
+    {
+      "Topic": "Tax/1099 Questions",
+      "Timeline": "2025-04-25",
+      "Mentions": 186
+    },
+    {
+      "Topic": "Safety Concerns",
+      "Timeline": "2025-04-25",
+      "Mentions": 21
+    },
+    {
+      "Topic": "Surge Pricing Issues",
+      "Timeline": "2025-04-25",
+      "Mentions": 185
+    },
+    {
+      "Topic": "Airport Queue Times",
+      "Timeline": "2025-04-25",
+      "Mentions": 19
+    },
+    {
+      "Topic": "Ratings Volatility",
+      "Timeline": "2025-04-25",
+      "Mentions": 140
+    },
+    {
+      "Topic": "In-App Messaging",
+      "Timeline": "2025-04-25",
+      "Mentions": 135
+    },
+    {
+      "Topic": "Toll Reimbursements",
+      "Timeline": "2025-04-25",
+      "Mentions": 45
+    },
+    {
+      "Topic": "Rider No-Shows",
+      "Timeline": "2025-04-25",
+      "Mentions": 22
+    },
+    {
+      "Topic": "Driver Deactivations",
+      "Timeline": "2025-04-25",
+      "Mentions": 102
+    },
+    {
+      "Topic": "Parking/Drop-off Issues",
+      "Timeline": "2025-04-25",
+      "Mentions": 58
+    },
+    {
+      "Topic": "Lost Item Fees",
+      "Timeline": "2025-04-25",
+      "Mentions": 174
+    },
+    {
+      "Topic": "EV Charging Access",
+      "Timeline": "2025-04-25",
+      "Mentions": 106
+    },
+    {
+      "Topic": "New Market Launches",
+      "Timeline": "2025-04-25",
+      "Mentions": 190
+    },
+    {
+      "Topic": "Vehicle Wear & Tear",
+      "Timeline": "2025-04-25",
+      "Mentions": 34
+    },
+    {
+      "Topic": "Upfront Fares",
+      "Timeline": "2025-04-25",
+      "Mentions": 150
+    },
+    {
+      "Topic": "Long Pickup Distances",
+      "Timeline": "2025-04-25",
+      "Mentions": 165
+    },
+    {
+      "Topic": "Destination Filters",
+      "Timeline": "2025-04-25",
+      "Mentions": 40
+    },
+    {
+      "Topic": "Holiday Demand",
+      "Timeline": "2025-04-25",
+      "Mentions": 25
+    },
+    {
+      "Topic": "Fuel Prices",
+      "Timeline": "2025-04-25",
+      "Mentions": 215
+    },
+    {
+      "Topic": "Fuel Prices",
+      "Timeline": "2025-05-25",
+      "Mentions": 195
+    },
+    {
+      "Topic": "Fare Adjustments",
+      "Timeline": "2025-05-25",
+      "Mentions": 169
+    },
+    {
+      "Topic": "Promotions & Quests",
+      "Timeline": "2025-05-25",
+      "Mentions": 78
+    },
+    {
+      "Topic": "Trip Stacking",
+      "Timeline": "2025-05-25",
+      "Mentions": 138
+    },
+    {
+      "Topic": "Parking/Drop-off Issues",
+      "Timeline": "2025-05-25",
+      "Mentions": 197
+    },
+    {
+      "Topic": "Tax/1099 Questions",
+      "Timeline": "2025-05-25",
+      "Mentions": 133
+    },
+    {
+      "Topic": "Rider No-Shows",
+      "Timeline": "2025-05-25",
+      "Mentions": 22
+    },
+    {
+      "Topic": "Holiday Demand",
+      "Timeline": "2025-05-25",
+      "Mentions": 175
+    },
+    {
+      "Topic": "Weather Impacts",
+      "Timeline": "2025-05-25",
+      "Mentions": 131
+    },
+    {
+      "Topic": "Vehicle Wear & Tear",
+      "Timeline": "2025-05-25",
+      "Mentions": 121
+    },
+    {
+      "Topic": "Scheduled Rides",
+      "Timeline": "2025-05-25",
+      "Mentions": 140
+    },
+    {
+      "Topic": "Cancellation Fees",
+      "Timeline": "2025-05-25",
+      "Mentions": 108
+    },
+    {
+      "Topic": "App Glitches",
+      "Timeline": "2025-05-25",
+      "Mentions": 19
+    },
+    {
+      "Topic": "Surge Pricing Issues",
+      "Timeline": "2025-05-25",
+      "Mentions": 133
+    },
+    {
+      "Topic": "Toll Reimbursements",
+      "Timeline": "2025-05-25",
+      "Mentions": 22
+    },
+    {
+      "Topic": "Map Rerouting",
+      "Timeline": "2025-05-25",
+      "Mentions": 86
+    },
+    {
+      "Topic": "Night Shift Patterns",
+      "Timeline": "2025-05-25",
+      "Mentions": 95
+    },
+    {
+      "Topic": "Destination Filters",
+      "Timeline": "2025-05-25",
+      "Mentions": 38
+    },
+    {
+      "Topic": "Lack of Tips",
+      "Timeline": "2025-05-25",
+      "Mentions": 224
+    },
+    {
+      "Topic": "EV Charging Access",
+      "Timeline": "2025-05-25",
+      "Mentions": 133
+    },
+    {
+      "Topic": "Fuel Prices",
+      "Timeline": "2025-06-25",
+      "Mentions": 29
+    },
+    {
+      "Topic": "Safety Concerns",
+      "Timeline": "2025-06-25",
+      "Mentions": 58
+    },
+    {
+      "Topic": "EV Charging Access",
+      "Timeline": "2025-06-25",
+      "Mentions": 129
+    },
+    {
+      "Topic": "Support Responsiveness",
+      "Timeline": "2025-06-25",
+      "Mentions": 118
+    },
+    {
+      "Topic": "Ratings Volatility",
+      "Timeline": "2025-06-25",
+      "Mentions": 62
+    },
+    {
+      "Topic": "App Glitches",
+      "Timeline": "2025-06-25",
+      "Mentions": 38
+    },
+    {
+      "Topic": "Tax/1099 Questions",
+      "Timeline": "2025-06-25",
+      "Mentions": 64
+    },
+    {
+      "Topic": "Parking/Drop-off Issues",
+      "Timeline": "2025-06-25",
+      "Mentions": 91
+    },
+    {
+      "Topic": "Earnings Transparency",
+      "Timeline": "2025-06-25",
+      "Mentions": 56
+    },
+    {
+      "Topic": "Cashless Tips",
+      "Timeline": "2025-06-25",
+      "Mentions": 83
+    },
+    {
+      "Topic": "Holiday Demand",
+      "Timeline": "2025-06-25",
+      "Mentions": 186
+    },
+    {
+      "Topic": "Cancellation Fees",
+      "Timeline": "2025-06-25",
+      "Mentions": 135
+    },
+    {
+      "Topic": "Delivery vs Rideshare",
+      "Timeline": "2025-06-25",
+      "Mentions": 148
+    },
+    {
+      "Topic": "Night Shift Patterns",
+      "Timeline": "2025-06-25",
+      "Mentions": 4
+    },
+    {
+      "Topic": "Background Check Delays",
+      "Timeline": "2025-06-25",
+      "Mentions": 67
+    },
+    {
+      "Topic": "Vehicle Wear & Tear",
+      "Timeline": "2025-06-25",
+      "Mentions": 154
+    },
+    {
+      "Topic": "Airport Queue Times",
+      "Timeline": "2025-06-25",
+      "Mentions": 5
+    },
+    {
+      "Topic": "Lost Item Fees",
+      "Timeline": "2025-06-25",
+      "Mentions": 169
+    },
+    {
+      "Topic": "Customer Behavior",
+      "Timeline": "2025-06-25",
+      "Mentions": 124
+    },
+    {
+      "Topic": "Upfront Fares",
+      "Timeline": "2025-06-25",
+      "Mentions": 97
+    },
+    {
+      "Topic": "Maintenance Costs",
+      "Timeline": "2025-07-25",
+      "Mentions": 104
+    },
+    {
+      "Topic": "Holiday Demand",
+      "Timeline": "2025-07-25",
+      "Mentions": 181
+    },
+    {
+      "Topic": "Background Check Delays",
+      "Timeline": "2025-07-25",
+      "Mentions": 169
+    },
+    {
+      "Topic": "Comfort vs UberX Demand",
+      "Timeline": "2025-07-25",
+      "Mentions": 166
+    },
+    {
+      "Topic": "Upfront Fares",
+      "Timeline": "2025-07-25",
+      "Mentions": 193
+    },
+    {
+      "Topic": "Rider No-Shows",
+      "Timeline": "2025-07-25",
+      "Mentions": 138
+    },
+    {
+      "Topic": "Surge Pricing Issues",
+      "Timeline": "2025-07-25",
+      "Mentions": 186
+    },
+    {
+      "Topic": "Cancellation Fees",
+      "Timeline": "2025-07-25",
+      "Mentions": 98
+    },
+    {
+      "Topic": "Lack of Tips",
+      "Timeline": "2025-07-25",
+      "Mentions": 186
+    },
+    {
+      "Topic": "Map Rerouting",
+      "Timeline": "2025-07-25",
+      "Mentions": 139
+    },
+    {
+      "Topic": "Destination Filters",
+      "Timeline": "2025-07-25",
+      "Mentions": 65
+    },
+    {
+      "Topic": "Cashless Tips",
+      "Timeline": "2025-07-25",
+      "Mentions": 184
+    },
+    {
+      "Topic": "Fare Adjustments",
+      "Timeline": "2025-07-25",
+      "Mentions": 210
+    },
+    {
+      "Topic": "Parking/Drop-off Issues",
+      "Timeline": "2025-07-25",
+      "Mentions": 73
+    },
+    {
+      "Topic": "Delivery vs Rideshare",
+      "Timeline": "2025-07-25",
+      "Mentions": 154
+    },
+    {
+      "Topic": "Scheduled Rides",
+      "Timeline": "2025-07-25",
+      "Mentions": 128
+    },
+    {
+      "Topic": "Tax/1099 Questions",
+      "Timeline": "2025-07-25",
+      "Mentions": 9
+    },
+    {
+      "Topic": "Ratings Volatility",
+      "Timeline": "2025-07-25",
+      "Mentions": 76
+    },
+    {
+      "Topic": "Driver Deactivations",
+      "Timeline": "2025-07-25",
+      "Mentions": 150
+    },
+    {
+      "Topic": "Support Responsiveness",
+      "Timeline": "2025-07-25",
+      "Mentions": 176
+    },
+    {
+      "Topic": "Toll Reimbursements",
+      "Timeline": "2025-08-25",
+      "Mentions": 49
+    },
+    {
+      "Topic": "Destination Filters",
+      "Timeline": "2025-08-25",
+      "Mentions": 0
+    },
+    {
+      "Topic": "Scheduled Rides",
+      "Timeline": "2025-08-25",
+      "Mentions": 82
+    },
+    {
+      "Topic": "Insurance Concerns",
+      "Timeline": "2025-08-25",
+      "Mentions": 195
+    },
+    {
+      "Topic": "Trip Stacking",
+      "Timeline": "2025-08-25",
+      "Mentions": 37
+    },
+    {
+      "Topic": "Holiday Demand",
+      "Timeline": "2025-08-25",
+      "Mentions": 136
+    },
+    {
+      "Topic": "Night Shift Patterns",
+      "Timeline": "2025-08-25",
+      "Mentions": 149
+    },
+    {
+      "Topic": "EV Charging Access",
+      "Timeline": "2025-08-25",
+      "Mentions": 217
+    },
+    {
+      "Topic": "Airport Queue Times",
+      "Timeline": "2025-08-25",
+      "Mentions": 119
+    },
+    {
+      "Topic": "Fuel Prices",
+      "Timeline": "2025-08-25",
+      "Mentions": 107
+    },
+    {
+      "Topic": "Rider No-Shows",
+      "Timeline": "2025-08-25",
+      "Mentions": 68
+    },
+    {
+      "Topic": "Parking/Drop-off Issues",
+      "Timeline": "2025-08-25",
+      "Mentions": 166
+    },
+    {
+      "Topic": "New Market Launches",
+      "Timeline": "2025-08-25",
+      "Mentions": 231
+    },
+    {
+      "Topic": "Navigation Bugs",
+      "Timeline": "2025-08-25",
+      "Mentions": 66
+    },
+    {
+      "Topic": "Map Rerouting",
+      "Timeline": "2025-08-25",
+      "Mentions": 112
+    },
+    {
+      "Topic": "Surge Pricing Issues",
+      "Timeline": "2025-08-25",
+      "Mentions": 79
+    },
+    {
+      "Topic": "Background Check Delays",
+      "Timeline": "2025-08-25",
+      "Mentions": 151
+    },
+    {
+      "Topic": "Tax/1099 Questions",
+      "Timeline": "2025-08-25",
+      "Mentions": 37
+    },
+    {
+      "Topic": "In-App Messaging",
+      "Timeline": "2025-08-25",
+      "Mentions": 60
+    },
+    {
+      "Topic": "Delivery vs Rideshare",
+      "Timeline": "2025-08-25",
+      "Mentions": 114
+    },
+    {
+      "Topic": "Destination Filters",
+      "Timeline": "2025-09-25",
+      "Mentions": 165
+    },
+    {
+      "Topic": "In-App Messaging",
+      "Timeline": "2025-09-25",
+      "Mentions": 88
+    },
+    {
+      "Topic": "Earnings Transparency",
+      "Timeline": "2025-09-25",
+      "Mentions": 54
+    },
+    {
+      "Topic": "Toll Reimbursements",
+      "Timeline": "2025-09-25",
+      "Mentions": 78
+    },
+    {
+      "Topic": "Scheduled Rides",
+      "Timeline": "2025-09-25",
+      "Mentions": 80
+    },
+    {
+      "Topic": "Holiday Demand",
+      "Timeline": "2025-09-25",
+      "Mentions": 105
+    },
+    {
+      "Topic": "Cancellation Fees",
+      "Timeline": "2025-09-25",
+      "Mentions": 18
+    },
+    {
+      "Topic": "Insurance Concerns",
+      "Timeline": "2025-09-25",
+      "Mentions": 42
+    },
+    {
+      "Topic": "EV Charging Access",
+      "Timeline": "2025-09-25",
+      "Mentions": 132
+    },
+    {
+      "Topic": "Delivery vs Rideshare",
+      "Timeline": "2025-09-25",
+      "Mentions": 74
+    },
+    {
+      "Topic": "Maintenance Costs",
+      "Timeline": "2025-09-25",
+      "Mentions": 48
+    },
+    {
+      "Topic": "Safety Concerns",
+      "Timeline": "2025-09-25",
+      "Mentions": 122
+    },
+    {
+      "Topic": "Multi-Apping Strategies",
+      "Timeline": "2025-09-25",
+      "Mentions": 108
+    },
+    {
+      "Topic": "Vehicle Wear & Tear",
+      "Timeline": "2025-09-25",
+      "Mentions": 135
+    },
+    {
+      "Topic": "Comfort vs UberX Demand",
+      "Timeline": "2025-09-25",
+      "Mentions": 18
+    },
+    {
+      "Topic": "Background Check Delays",
+      "Timeline": "2025-09-25",
+      "Mentions": 121
+    },
+    {
+      "Topic": "Tax/1099 Questions",
+      "Timeline": "2025-09-25",
+      "Mentions": 224
+    },
+    {
+      "Topic": "Ratings Volatility",
+      "Timeline": "2025-09-25",
+      "Mentions": 169
+    },
+    {
+      "Topic": "Rider No-Shows",
+      "Timeline": "2025-09-25",
+      "Mentions": 221
+    },
+    {
+      "Topic": "Map Rerouting",
+      "Timeline": "2025-09-25",
+      "Mentions": 117
+    },
+    {
+      "Topic": "Lack of Tips",
+      "Timeline": "2025-10-25",
+      "Mentions": 61
+    },
+    {
+      "Topic": "Lost Item Fees",
+      "Timeline": "2025-10-25",
+      "Mentions": 127
+    },
+    {
+      "Topic": "Navigation Bugs",
+      "Timeline": "2025-10-25",
+      "Mentions": 127
+    },
+    {
+      "Topic": "Comfort vs UberX Demand",
+      "Timeline": "2025-10-25",
+      "Mentions": 176
+    },
+    {
+      "Topic": "Ratings Volatility",
+      "Timeline": "2025-10-25",
+      "Mentions": 1
+    },
+    {
+      "Topic": "Map Rerouting",
+      "Timeline": "2025-10-25",
+      "Mentions": 181
+    },
+    {
+      "Topic": "Multi-Apping Strategies",
+      "Timeline": "2025-10-25",
+      "Mentions": 53
+    },
+    {
+      "Topic": "Weather Impacts",
+      "Timeline": "2025-10-25",
+      "Mentions": 39
+    },
+    {
+      "Topic": "In-App Messaging",
+      "Timeline": "2025-10-25",
+      "Mentions": 80
+    },
+    {
+      "Topic": "Vehicle Wear & Tear",
+      "Timeline": "2025-10-25",
+      "Mentions": 86
+    },
+    {
+      "Topic": "Trip Stacking",
+      "Timeline": "2025-10-25",
+      "Mentions": 126
+    },
+    {
+      "Topic": "Safety Concerns",
+      "Timeline": "2025-10-25",
+      "Mentions": 124
+    },
+    {
+      "Topic": "New Market Launches",
+      "Timeline": "2025-10-25",
+      "Mentions": 104
+    },
+    {
+      "Topic": "Upfront Fares",
+      "Timeline": "2025-10-25",
+      "Mentions": 208
+    },
+    {
+      "Topic": "EV Charging Access",
+      "Timeline": "2025-10-25",
+      "Mentions": 59
+    },
+    {
+      "Topic": "Parking/Drop-off Issues",
+      "Timeline": "2025-10-25",
+      "Mentions": 111
+    },
+    {
+      "Topic": "Tax/1099 Questions",
+      "Timeline": "2025-10-25",
+      "Mentions": 215
+    },
+    {
+      "Topic": "Earnings Transparency",
+      "Timeline": "2025-10-25",
+      "Mentions": 25
+    },
+    {
+      "Topic": "Airport Queue Times",
+      "Timeline": "2025-10-25",
+      "Mentions": 88
+    },
+    {
+      "Topic": "Holiday Demand",
+      "Timeline": "2025-10-25",
+      "Mentions": 56
+    }
+  ]
+}

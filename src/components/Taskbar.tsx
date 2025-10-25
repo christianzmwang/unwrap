@@ -1,6 +1,6 @@
 'use client';
 
-import { Fragment } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
@@ -29,9 +29,15 @@ export default function Taskbar({
   showTopBorder = false,
 }: TaskbarProps) {
   const pathname = usePathname();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const outerClasses = [
     'w-full',
+    'bg-black',
     showTopBorder ? 'border-t border-gray-800' : '',
     className,
   ]
@@ -39,7 +45,7 @@ export default function Taskbar({
     .join(' ');
 
   const innerClasses = [
-    'max-w-3xl mx-auto w-full px-6 py-4 flex items-center gap-6 text-lg',
+    'max-w-3xl w-full px-6 py-4 flex items-center justify-start gap-6 text-lg',
     innerClassName,
   ]
     .filter(Boolean)
@@ -49,10 +55,10 @@ export default function Taskbar({
     <nav className={outerClasses} aria-label="Primary">
       <div className={innerClasses}>
         {links.map(({ href, label }, index) => {
-          const isActive = isActiveRoute(pathname, href);
+          const isActive = mounted ? isActiveRoute(pathname, href) : false;
           const linkClasses = [
             'transition-colors',
-            isActive ? 'text-red-500 font-semibold' : 'text-white hover:text-gray-300',
+            isActive ? 'text-gray-400' : 'text-white hover:text-gray-300',
           ].join(' ');
 
           return (
