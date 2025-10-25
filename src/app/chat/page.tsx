@@ -7,11 +7,89 @@ type ChatMessage = {
   id: string;
   role: 'user' | 'assistant';
   content: string;
+  isTyping?: boolean;
 };
 
 const createId = () => `${Date.now()}-${Math.random().toString(16).slice(2)}`;
 
 const systemPrompt = 'You are a helpful assistant for the Black Swan project.';
+
+// Custom hook for typing effect - completes in exactly 1 second
+const useTypingEffect = (text: string, totalDuration: number = 1000) => {
+  const [displayedText, setDisplayedText] = useState('');
+  const [isComplete, setIsComplete] = useState(false);
+
+  useEffect(() => {
+    setDisplayedText('');
+    setIsComplete(false);
+    
+    if (text.length === 0) {
+      setIsComplete(true);
+      return;
+    }
+    
+    let currentIndex = 0;
+    const speed = totalDuration / text.length; // Calculate speed per character
+
+    const intervalId = setInterval(() => {
+      if (currentIndex < text.length) {
+        setDisplayedText(text.slice(0, currentIndex + 1));
+        currentIndex++;
+      } else {
+        setIsComplete(true);
+        clearInterval(intervalId);
+      }
+    }, speed);
+
+    return () => clearInterval(intervalId);
+  }, [text, totalDuration]);
+
+  return { displayedText, isComplete };
+};
+
+// Component for rendering a single message with typing effect
+const MessageBubble = ({ 
+  message, 
+  onTypingComplete 
+}: { 
+  message: ChatMessage;
+  onTypingComplete?: (id: string) => void;
+}) => {
+  const { displayedText, isComplete } = useTypingEffect(
+    message.role === 'assistant' && message.isTyping ? message.content : '',
+    1000 // 1 second total duration
+  );
+
+  // Notify parent when typing completes
+  useEffect(() => {
+    if (isComplete && message.isTyping && onTypingComplete) {
+      onTypingComplete(message.id);
+    }
+  }, [isComplete, message.isTyping, message.id, onTypingComplete]);
+
+  const content = message.role === 'assistant' && message.isTyping
+    ? displayedText
+    : message.content;
+
+  return (
+    <div
+      className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
+    >
+      <div
+        className={`px-4 py-3 text-sm sm:text-base leading-relaxed max-w-[85%] ${
+          message.role === 'user'
+            ? 'bg-gray-700 text-white'
+            : 'bg-gray-900 text-gray-100 border border-gray-800'
+        }`}
+      >
+        {content}
+        {message.role === 'assistant' && message.isTyping && !isComplete && (
+          <span className="inline-block w-1 h-4 bg-gray-100 ml-1 animate-pulse"></span>
+        )}
+      </div>
+    </div>
+  );
+};
 
 export default function Chat() {
   const [messages, setMessages] = useState<ChatMessage[]>([
@@ -40,6 +118,14 @@ export default function Chat() {
     ]);
     setInput('');
     setError(null);
+  };
+
+  const handleTypingComplete = (messageId: string) => {
+    setMessages((prev) =>
+      prev.map((msg) =>
+        msg.id === messageId ? { ...msg, isTyping: false } : msg
+      )
+    );
   };
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
@@ -95,6 +181,7 @@ export default function Chat() {
           id: createId(),
           role: 'assistant',
           content: assistantReply,
+          isTyping: true,
         },
       ]);
     } catch (err) {
@@ -119,20 +206,11 @@ export default function Chat() {
       <div className="flex-1 overflow-y-auto px-6 py-6">
         <div className="max-w-3xl mx-auto w-full space-y-4">
           {messages.map((message) => (
-            <div
-              key={message.id}
-              className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
-            >
-              <div
-                className={`px-4 py-3 text-sm sm:text-base leading-relaxed max-w-[85%] ${
-                  message.role === 'user'
-                    ? 'bg-gray-700 text-white'
-                    : 'bg-gray-900 text-gray-100 border border-gray-800'
-                }`}
-              >
-                {message.content}
-              </div>
-            </div>
+            <MessageBubble 
+              key={message.id} 
+              message={message}
+              onTypingComplete={handleTypingComplete}
+            />
           ))}
           {isSending && (
             <div className="flex justify-start">
