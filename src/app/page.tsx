@@ -1,7 +1,8 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import Taskbar from '@/components/Taskbar';
+import WordCloudChart, { WordData } from '@/components/WordCloudChart';
 
 interface Insight {
   Topic: string;
@@ -16,6 +17,8 @@ interface InsightData {
 }
 
 type DateRange = '7D' | '1M' | '3M' | '6M' | '1Y' | 'CUSTOM';
+
+const WORD_CLOUD_LIMIT = 100;
 
 export default function Home() {
   const [data, setData] = useState<InsightData | null>(null);
@@ -116,7 +119,7 @@ export default function Home() {
     };
   }, []);
 
-  const filterByDateRange = (insights: Insight[]) => {
+  const filterByDateRange = useCallback((insights: Insight[]) => {
     if (!insights.length) return [];
 
     if (dateRange === 'CUSTOM') {
@@ -158,13 +161,44 @@ export default function Home() {
       const timelineDate = parseTimeline(insight.Timeline);
       return timelineDate ? timelineDate >= cutoffDate : false;
     });
-  };
+  }, [customEndDate, customStartDate, dateRange]);
 
   const handleCustomDateApply = () => {
     setDateRange('CUSTOM');
     setShowCustomDialog(false);
   };
 
+  const allInsights: Insight[] = useMemo(() => {
+    if (!data) return [];
+    return activeView === 'raw' ? data.Raw_insights : data.Adjusted_Insights;
+  }, [activeView, data]);
+  const filteredInsights = useMemo(
+    () => filterByDateRange(allInsights),
+    [allInsights, filterByDateRange]
+  );
+  const wordCloudData: WordData[] = useMemo(() => {
+    if (!filteredInsights.length) {
+      return [];
+    }
+
+    const aggregated = filteredInsights.reduce<Record<string, number>>((acc, insight) => {
+      const topic = insight.Topic?.trim();
+      if (!topic) return acc;
+
+      const mentions = Number.isFinite(insight.Mentions) ? insight.Mentions : 0;
+      if (mentions <= 0) return acc;
+
+      acc[topic] = (acc[topic] ?? 0) + mentions;
+      return acc;
+    }, {});
+
+    return Object.entries(aggregated)
+      .map(([text, value]) => ({ text, value }))
+      .sort((a, b) => b.value - a.value)
+      .slice(0, WORD_CLOUD_LIMIT);
+  }, [filteredInsights]);
+  
+  
   if (error) {
     return (
       <div className="h-screen bg-black flex flex-col">
@@ -199,9 +233,6 @@ export default function Home() {
     );
   }
 
-  const allInsights = activeView === 'raw' ? data.Raw_insights : data.Adjusted_Insights;
-  const filteredInsights = filterByDateRange(allInsights);
-  
   const topMention = filteredInsights.length ? Math.max(...filteredInsights.map(i => i.Mentions)) : 0;
   const minMentions = filteredInsights.length ? Math.max(5, topMention * 0.3) : 0;
   const insights = filteredInsights
@@ -230,7 +261,7 @@ export default function Home() {
             <span className="text-white text-base">Subreddit:</span>
             <span className="text-white text-base font-semibold">r/{data.Subreddit}</span>
           </div>
-          <div className="flex gap-3">
+          <div className="flex items-center gap-3">
             <button
               onClick={() => setViewMode('list')}
               className={`${insightToggleButtonBase} ${
@@ -251,6 +282,7 @@ export default function Home() {
             >
               Word Cloud
             </button>
+            <div className="h-6 w-px bg-gray-700 mx-3" aria-hidden="true" />
             <button
               onClick={() => setActiveView('raw')}
               className={`${insightToggleButtonBase} ${
@@ -310,8 +342,33 @@ export default function Home() {
               )}
             </div>
           ) : (
-            <div className="flex-1 flex items-center justify-center">
-              <div className="text-gray-400 text-lg">Word Cloud View - Coming Soon</div>
+            <div className="flex-1 flex flex-col pb-6 gap-4 w-full">
+              <div className="flex-1 min-h-0 w-full">
+                <WordCloudChart data={wordCloudData} />
+              </div>
+              {wordCloudData.length ? (
+                <div className="relative w-full">
+                  <div className="overflow-x-auto no-scrollbar">
+                    <div className="flex gap-3 min-w-max pb-2 px-6">
+                      {wordCloudData.map((word) => (
+                        <div
+                          key={word.text}
+                          className="flex items-center gap-2 bg-gray-900/60 px-4 py-2 border border-gray-800 text-white"
+                        >
+                          <span className="font-semibold uppercase tracking-tight">{word.text}</span>
+                          <span className="text-xs text-gray-400 whitespace-nowrap">{word.value} mentions</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="pointer-events-none absolute left-0 top-0 h-full w-12 bg-gradient-to-r from-black via-black/70 to-transparent" />
+                  <div className="pointer-events-none absolute right-0 top-0 h-full w-12 bg-gradient-to-l from-black via-black/70 to-transparent" />
+                </div>
+              ) : (
+                <div className="text-center text-sm text-gray-400">
+                  No topics available for the selected filters.
+                </div>
+              )}
             </div>
           )}
         </div>
