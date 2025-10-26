@@ -75,9 +75,11 @@ function WordCloudChartComponent({ data }: WordCloudChartProps) {
     (word: WordData) => {
       if (!maxValue) return '#fca5a5';
       const normalized = word.value / maxValue;
-      const hue = 0; // red
+      // Gradient from blue (240) to red (0)
+      // Smaller words are blue, bigger words are red
+      const hue = Math.round(240 - normalized * 240);
       const saturation = 80;
-      const lightness = Math.round(85 - normalized * 45);
+      const lightness = 50;
       return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
     },
     [maxValue]
