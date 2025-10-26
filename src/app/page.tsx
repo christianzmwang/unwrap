@@ -34,13 +34,25 @@ const DATASETS: DatasetConfig[] = [
     key: 'uber',
     label: 'Uber Drivers',
     subreddit: 'uberdrivers',
-    id: '68fdbbf19ca49741df435ac6',
+    id: '68fdd0416736f9ac1aad9513',
+  },
+  {
+    key: 'dating',
+    label: 'Dating Advice',
+    subreddit: 'dating_advice',
+    id: '68fdd4835ac5a3e7d6258fcf',
+  },
+  {
+    key: 'southwest',
+    label: 'Southwest Airlines',
+    subreddit: 'SouthwestAirlines',
+    id: '68fdd987e449a7fb75b91d6b',
   },
   {
     key: 'lyft',
     label: 'Lyft Drivers',
     subreddit: 'lyftdrivers',
-    id: '68fdc258fc4a814ac351d5e4',
+    id: '68fdde03bb454d8647afd104',
   },
 ];
 
@@ -416,8 +428,6 @@ export default function Home() {
                 })}
               </div>
             </div>
-            <div className="pointer-events-none absolute left-0 top-0 h-full w-12 bg-gradient-to-r from-black via-black/70 to-transparent" />
-            <div className="pointer-events-none absolute right-0 top-0 h-full w-12 bg-gradient-to-l from-black via-black/70 to-transparent" />
           </div>
           <div className="flex items-center gap-3 ml-auto">
             <button

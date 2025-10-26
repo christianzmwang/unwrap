@@ -5,6 +5,8 @@ import type { IDataSchema } from '@/models/Insight';
 
 const DEFAULT_SUBREDDIT = 'uberdrivers';
 
+const escapeRegex = (value: string) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
 const toMillis = (value: Date | number | string | undefined | null) => {
   if (!value) {
     return null;
@@ -100,10 +102,65 @@ const getMentionCount = (insight: any) => {
   return 0;
 };
 
+const getDailyMentions = (insight: any) => {
+  const mentions = Array.isArray(insight?.mentions) ? insight.mentions : [];
+
+  if (!mentions.length) {
+    const fallbackDate =
+      formatDateLabel(
+        insight?.date ?? insight?.generated_at ?? insight?.updated_at ?? insight?.created_at
+      ) ?? (() => {
+        const timeline = resolveTimeline(insight);
+        return timeline && timeline.toLowerCase() !== 'unknown date' ? timeline : null;
+      })();
+
+    if (fallbackDate) {
+      return [
+        {
+          date: fallbackDate,
+          count: getMentionCount(insight),
+        },
+      ];
+    }
+
+    return [];
+  }
+
+  const counts = mentions.reduce<Record<string, number>>((acc, mention) => {
+    if (!mention || typeof mention !== 'object') {
+      return acc;
+    }
+
+    const label = formatDateLabel(
+      (mention as any).date_posted ??
+        (mention as any).data_posted ??
+        (mention as any).date ??
+        (mention as any).created_at ??
+        (mention as any).timestamp
+    );
+
+    if (!label) {
+      return acc;
+    }
+
+    acc[label] = (acc[label] ?? 0) + 1;
+    return acc;
+  }, {});
+
+  return Object.entries(counts)
+    .map(([date, count]) => ({ date, count }))
+    .sort((a, b) => {
+      const aMillis = new Date(a.date).getTime();
+      const bMillis = new Date(b.date).getTime();
+      return aMillis - bMillis;
+    });
+};
+
 const mapRawInsight = (insight: any) => ({
   Topic: insight?.insight ?? 'Unknown topic',
   Timeline: resolveTimeline(insight),
   Mentions: getMentionCount(insight),
+  DailyMentions: getDailyMentions(insight),
 });
 
 const resolveFilteredTimeline = (insight: any) => {
@@ -153,7 +210,7 @@ export async function GET(request: NextRequest) {
   const idParam = searchParams.get('id');
 
   let targetId: mongoose.Types.ObjectId | null = null;
-  let fallbackReason: 'missing-id' | 'invalid-id' | 'not-found' | null = null;
+  let fallbackReason: 'missing-id' | 'invalid-id' | 'not-found' | 'subreddit-mismatch' | null = null;
 
   if (idParam) {
     try {
@@ -177,17 +234,43 @@ export async function GET(request: NextRequest) {
     const collection = database.collection<IDataSchema>('insights');
     let doc: IDataSchema | null = null;
 
-    if (targetId) {
-      doc = await collection.findOne({ _id: targetId, subreddit });
-    }
+    const findLatestForSubreddit = async (value: string) => {
+      if (!value) {
+        return null;
+      }
 
-    if (!doc) {
-      const latestCursor = collection
-        .find({ subreddit })
+      const cursor = collection
+        .find({ subreddit: value })
         .sort({ created_at: -1, _id: -1 })
         .limit(1);
 
-      const latestDoc = await latestCursor.next();
+      const exactMatch = await cursor.next();
+      if (exactMatch) {
+        return exactMatch;
+      }
+
+      const regex = new RegExp(`^${escapeRegex(value)}$`, 'i');
+      const fallbackCursor = collection
+        .find({ subreddit: regex })
+        .sort({ created_at: -1, _id: -1 })
+        .limit(1);
+
+      return fallbackCursor.next();
+    };
+
+    if (targetId) {
+      const docById = await collection.findOne({ _id: targetId });
+      if (docById) {
+        if (docById.subreddit !== subreddit) {
+          fallbackReason = 'subreddit-mismatch';
+        } else {
+          doc = docById;
+        }
+      }
+    }
+
+    if (!doc) {
+      const latestDoc = await findLatestForSubreddit(subreddit);
 
       if (!latestDoc) {
         const message = targetId
@@ -197,8 +280,8 @@ export async function GET(request: NextRequest) {
         return NextResponse.json({ error: message }, { status: 404 });
       }
 
-      if (!fallbackReason && targetId) {
-        fallbackReason = 'not-found';
+      if (!fallbackReason) {
+        fallbackReason = targetId ? 'not-found' : null;
       }
 
       doc = latestDoc;
@@ -227,6 +310,7 @@ export async function GET(request: NextRequest) {
       responseBody.Fallback = {
         reason: fallbackReason,
         requestedId: idParam ?? undefined,
+        requestedSubreddit: subreddit ?? undefined,
       };
     }
 
