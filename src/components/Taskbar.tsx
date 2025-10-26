@@ -12,6 +12,7 @@ type TaskbarProps = {
 
 const links = [
   { href: '/', label: 'Dashboard' },
+  { href: '/insight', label: 'Insight' },
   { href: '/chat', label: 'Chat' },
 ];
 

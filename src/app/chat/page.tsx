@@ -2,6 +2,7 @@
 
 import { FormEvent, useEffect, useRef, useState } from 'react';
 import Taskbar from '@/components/Taskbar';
+import BrandHeader from '@/components/BrandHeader';
 
 type ChatMessage = {
   id: string;
@@ -195,9 +196,7 @@ export default function Chat() {
   return (
     <div className="h-screen bg-black flex flex-col">
       {/* Top header - BLACK SWAN */}
-      <div className="px-6 py-4">
-        <h1 className="text-white text-lg">BLACK SWAN</h1>
-      </div>
+      <BrandHeader />
       
       {/* Separator */}
       <div className="border-b border-gray-800"></div>

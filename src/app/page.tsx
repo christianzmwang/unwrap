@@ -3,26 +3,52 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import Taskbar from '@/components/Taskbar';
 import WordCloudChart, { WordData } from '@/components/WordCloudChart';
+import BrandHeader from '@/components/BrandHeader';
 
 interface Insight {
   Topic: string;
   Timeline: string;
   Mentions: number;
+  FilterType?: string;
+  FilterCriteria?: Record<string, unknown>;
 }
 
 interface InsightData {
   Subreddit: string;
   Raw_insights: Insight[];
-  Adjusted_Insights: Insight[];
+  Filtered_Insights: Insight[];
+}
+
+interface DatasetConfig {
+  key: string;
+  label: string;
+  subreddit: string;
+  id: string;
 }
 
 type DateRange = '7D' | '1M' | '3M' | '6M' | '1Y' | 'CUSTOM';
 
 const WORD_CLOUD_LIMIT = 100;
+const DATASETS: DatasetConfig[] = [
+  {
+    key: 'uber',
+    label: 'Uber Drivers',
+    subreddit: 'uberdrivers',
+    id: '68fdbbf19ca49741df435ac6',
+  },
+  {
+    key: 'lyft',
+    label: 'Lyft Drivers',
+    subreddit: 'lyftdrivers',
+    id: '68fdc258fc4a814ac351d5e4',
+  },
+];
 
 export default function Home() {
-  const [data, setData] = useState<InsightData | null>(null);
-  const [activeView, setActiveView] = useState<'raw' | 'adjusted'>('raw');
+  const [datasetCache, setDatasetCache] = useState<Record<string, InsightData>>({});
+  const [activeDatasetKey, setActiveDatasetKey] = useState(DATASETS[0]?.key ?? '');
+  const [loadingKey, setLoadingKey] = useState<string | null>(null);
+  const [activeView, setActiveView] = useState<'raw' | 'filtered'>('raw');
   const [viewMode, setViewMode] = useState<'list' | 'wordcloud'>('list');
   const [dateRange, setDateRange] = useState<DateRange>('1M');
   const [customStartDate, setCustomStartDate] = useState('');
@@ -30,20 +56,68 @@ export default function Home() {
   const [showCustomDialog, setShowCustomDialog] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const parseTimeline = (value: string) => {
+  const activeDataset =
+    DATASETS.find((dataset) => dataset.key === activeDatasetKey) ?? DATASETS[0];
+  const data = activeDataset ? datasetCache[activeDataset.key] ?? null : null;
+  const isLoadingActiveDataset = loadingKey === activeDataset?.key;
+
+  const parseDateValue = (value: string | Date | null | undefined) => {
     if (!value) return null;
+
+    if (value instanceof Date) {
+      return Number.isNaN(value.getTime()) ? null : value;
+    }
+
     const parsed = new Date(value);
     return Number.isNaN(parsed.getTime()) ? null : parsed;
   };
 
+  const parseTimelineRange = (value: string | null | undefined) => {
+    if (!value) return null;
+    const trimmed = value.trim();
+    if (!trimmed || trimmed.toLowerCase() === 'unknown date') {
+      return null;
+    }
+
+    const rangeSeparator = ' - ';
+    if (trimmed.includes(rangeSeparator)) {
+      const [startRaw, endRaw] = trimmed.split(rangeSeparator);
+      const start = parseDateValue(startRaw);
+      const end = parseDateValue(endRaw);
+
+      if (!start && !end) {
+        return null;
+      }
+
+      return {
+        start: start ?? end ?? null,
+        end: end ?? start ?? null,
+      } as const;
+    }
+
+    const singleDate = parseDateValue(trimmed);
+    return singleDate ? ({ start: singleDate, end: singleDate } as const) : null;
+  };
+
+  const parseTimeline = (value: string | null | undefined) => {
+    const range = parseTimelineRange(value);
+    return range?.end ?? range?.start ?? null;
+  };
+
   const formatTimeline = (value: string) => {
-    const parsed = parseTimeline(value);
-    if (!parsed) return 'Unknown date';
-    
-    const year = parsed.getFullYear();
-    const month = String(parsed.getMonth() + 1).padStart(2, '0');
-    const day = String(parsed.getDate()).padStart(2, '0');
-    return `${month}/${day}/${year}`;
+    const range = parseTimelineRange(value);
+    if (!range?.start || !range?.end) {
+      return 'Unknown date';
+    }
+
+    const startLabel = formatDate(range.start);
+    const endLabel = formatDate(range.end);
+
+    if (range.start.getTime() === range.end.getTime()) {
+      return startLabel;
+    }
+
+    return `${startLabel} - ${endLabel}`;
   };
 
   const formatDate = (date: Date) => {
@@ -84,22 +158,46 @@ export default function Home() {
     return `${formatDate(cutoffDate)} - ${formatDate(now)}`;
   };
 
+  const datasetLabel = useMemo(
+    () => (activeView === 'raw' ? 'Raw insights' : 'Filtered insights'),
+    [activeView]
+  );
+  const displayDateRange = getDisplayDateRange();
+
   useEffect(() => {
     let cancelled = false;
+    const datasetKey = activeDataset?.key;
+
+    if (!activeDataset || !datasetKey) {
+      return;
+    }
+
+    if (datasetCache[datasetKey]) {
+      return;
+    }
+
+    const controller = new AbortController();
 
     const loadData = async () => {
       const cacheBuster = Date.now().toString();
-      const url = `/data/testdata.json?ts=${cacheBuster}`;
+      const url = `/api/insights?subreddit=${encodeURIComponent(
+        activeDataset.subreddit
+      )}&id=${activeDataset.id}&ts=${cacheBuster}`;
+
+      setLoadingKey(activeDataset.key);
 
       try {
-        const res = await fetch(url, { cache: 'no-store' });
+        const res = await fetch(url, { cache: 'no-store', signal: controller.signal });
         if (!res.ok) {
           throw new Error(`Request failed with status ${res.status}`);
         }
 
         const payload: InsightData = await res.json();
         if (!cancelled) {
-          setData(payload);
+          setDatasetCache((prev) => ({
+            ...prev,
+            [activeDataset.key]: payload,
+          }));
           setError(null);
         }
       } catch (err) {
@@ -109,6 +207,10 @@ export default function Home() {
           }
           setError('Failed to load data. Please refresh.');
         }
+      } finally {
+        if (!cancelled) {
+          setLoadingKey((current) => (current === activeDataset.key ? null : current));
+        }
       }
     };
 
@@ -116,8 +218,13 @@ export default function Home() {
 
     return () => {
       cancelled = true;
+      controller.abort();
     };
-  }, []);
+  }, [activeDataset, datasetCache]);
+
+  useEffect(() => {
+    setError(null);
+  }, [activeDataset?.key]);
 
   const filterByDateRange = useCallback((insights: Insight[]) => {
     if (!insights.length) return [];
@@ -129,8 +236,12 @@ export default function Home() {
       if (!start || !end || start > end) return [];
 
       return insights.filter((insight) => {
-        const timelineDate = parseTimeline(insight.Timeline);
-        return timelineDate ? timelineDate >= start && timelineDate <= end : false;
+        const range = parseTimelineRange(insight.Timeline);
+        if (!range?.start || !range?.end) {
+          return false;
+        }
+
+        return range.start <= end && range.end >= start;
       });
     }
 
@@ -154,12 +265,16 @@ export default function Home() {
         cutoffDate.setFullYear(now.getFullYear() - 1);
         break;
       default:
-        return insights.filter((insight) => parseTimeline(insight.Timeline));
+        return insights.filter((insight) => Boolean(parseTimelineRange(insight.Timeline)));
     }
 
     return insights.filter((insight) => {
-      const timelineDate = parseTimeline(insight.Timeline);
-      return timelineDate ? timelineDate >= cutoffDate : false;
+      const range = parseTimelineRange(insight.Timeline);
+      if (!range?.end) {
+        return false;
+      }
+
+      return range.end >= cutoffDate;
     });
   }, [customEndDate, customStartDate, dateRange]);
 
@@ -168,43 +283,66 @@ export default function Home() {
     setShowCustomDialog(false);
   };
 
-  const allInsights: Insight[] = useMemo(() => {
-    if (!data) return [];
-    return activeView === 'raw' ? data.Raw_insights : data.Adjusted_Insights;
-  }, [activeView, data]);
-  const filteredInsights = useMemo(
-    () => filterByDateRange(allInsights),
-    [allInsights, filterByDateRange]
+  const normaliseInsights = useCallback((list: Insight[]) => {
+    return list
+      .filter((item) => item.Mentions > 0)
+      .sort((a, b) => b.Mentions - a.Mentions);
+  }, []);
+
+  const filteredRawInsights = useMemo(
+    () => (data ? filterByDateRange(data.Raw_insights ?? []) : []),
+    [data, filterByDateRange]
+  );
+  const filteredFilteredInsights = useMemo(
+    () => (data ? filterByDateRange(data.Filtered_Insights ?? []) : []),
+    [data, filterByDateRange]
+  );
+
+  const normalisedRawInsights = useMemo(
+    () => normaliseInsights(filteredRawInsights),
+    [filteredRawInsights, normaliseInsights]
+  );
+  const normalisedFilteredInsights = useMemo(
+    () => normaliseInsights(filteredFilteredInsights),
+    [filteredFilteredInsights, normaliseInsights]
+  );
+
+  const insights = activeView === 'raw' ? normalisedRawInsights : normalisedFilteredInsights;
+  const listViewKey = useMemo(
+    () => `${activeView}-${dateRange}-${customStartDate || 'na'}-${customEndDate || 'na'}`,
+    [activeView, customEndDate, customStartDate, dateRange]
   );
   const wordCloudData: WordData[] = useMemo(() => {
-    if (!filteredInsights.length) {
+    if (!insights.length) {
       return [];
     }
 
-    const aggregated = filteredInsights.reduce<Record<string, number>>((acc, insight) => {
+    const aggregated = insights.reduce<Record<string, number>>((acc, insight) => {
       const topic = insight.Topic?.trim();
-      if (!topic) return acc;
+      if (!topic) {
+        return acc;
+      }
 
       const mentions = Number.isFinite(insight.Mentions) ? insight.Mentions : 0;
-      if (mentions <= 0) return acc;
+      if (mentions <= 0) {
+        return acc;
+      }
 
       acc[topic] = (acc[topic] ?? 0) + mentions;
       return acc;
-    }, {});
+    }, {} as Record<string, number>);
 
     return Object.entries(aggregated)
       .map(([text, value]) => ({ text, value }))
       .sort((a, b) => b.value - a.value)
       .slice(0, WORD_CLOUD_LIMIT);
-  }, [filteredInsights]);
+  }, [insights]);
   
   
-  if (error) {
+  if (error && !isLoadingActiveDataset) {
     return (
       <div className="h-screen bg-black flex flex-col">
-        <div className="px-6 py-4">
-          <h1 className="text-white text-lg">BLACK SWAN</h1>
-        </div>
+        <BrandHeader />
         <div className="border-b border-gray-800"></div>
         <div className="flex-1 flex items-center justify-center">
           <div className="text-red-400">{error}</div>
@@ -219,12 +357,15 @@ export default function Home() {
   if (!data) {
     return (
       <div className="h-screen bg-black flex flex-col">
-        <div className="px-6 py-4">
-          <h1 className="text-white text-lg">BLACK SWAN</h1>
-        </div>
+        <BrandHeader />
         <div className="border-b border-gray-800"></div>
         <div className="flex-1 flex items-center justify-center">
-          <div className="text-white">Loading...</div>
+          <div className="flex flex-col items-center gap-3 text-white/80">
+            <div className="h-12 w-12 rounded-full border-2 border-white/20 border-t-white animate-spin" />
+            <span className="text-sm tracking-wide uppercase">
+              Loading {activeDataset?.label ?? 'dataset'}…
+            </span>
+          </div>
         </div>
         <div className="border-t border-gray-800 bg-black/80 backdrop-blur">
           <Taskbar />
@@ -233,12 +374,8 @@ export default function Home() {
     );
   }
 
-  const topMention = filteredInsights.length ? Math.max(...filteredInsights.map(i => i.Mentions)) : 0;
-  const minMentions = filteredInsights.length ? Math.max(5, topMention * 0.3) : 0;
-  const insights = filteredInsights
-    .filter(i => i.Mentions >= (filteredInsights.length ? minMentions : 0))
-    .sort((a, b) => b.Mentions - a.Mentions)
-    .slice(0, 30);
+
+  const isFilteredView = activeView === 'filtered';
 
   const dashboardButtonBase = 'px-5 py-2 font-medium transition-colors';
   const insightToggleButtonBase = `${dashboardButtonBase} text-base`;
@@ -246,27 +383,48 @@ export default function Home() {
   return (
     <div className="h-screen bg-black flex flex-col">
       {/* Top left logo */}
-      <div className="px-6 py-4">
-        <h1 className="text-white text-lg">BLACK SWAN</h1>
-      </div>
+      <BrandHeader />
       
       {/* Separator */}
       <div className="border-b border-gray-800"></div>
 
       {/* Main content area */}
       <div className="flex-1 overflow-hidden flex flex-col pt-4">
-        {/* Subreddit Section with Buttons */}
-        <div className="mb-3 px-6 flex flex-wrap items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <span className="text-white text-base">Subreddit:</span>
-            <span className="text-white text-base font-semibold">r/{data.Subreddit}</span>
+        {/* Dataset selector and view toggles */}
+        <div className="mb-3 px-6 flex flex-wrap items-center justify-between gap-4 w-full">
+          <div className="relative">
+            <div className="overflow-x-auto no-scrollbar">
+              <div className="flex gap-3 min-w-max pb-2 pr-6">
+                {DATASETS.map((dataset) => {
+                  const isActive = dataset.key === activeDataset?.key;
+                  const resolvedSubreddit = dataset.subreddit;
+
+                  return (
+                    <button
+                      key={dataset.key}
+                      type="button"
+                      onClick={() => setActiveDatasetKey(dataset.key)}
+                      className={`px-5 py-2 border text-sm uppercase tracking-tight min-w-[180px] transition-colors ${
+                        isActive
+                          ? 'bg-white text-black border-white'
+                          : 'bg-gray-900/60 text-white border-gray-800 hover:bg-gray-800/80'
+                      }`}
+                    >
+                      r/{resolvedSubreddit}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+            <div className="pointer-events-none absolute left-0 top-0 h-full w-12 bg-gradient-to-r from-black via-black/70 to-transparent" />
+            <div className="pointer-events-none absolute right-0 top-0 h-full w-12 bg-gradient-to-l from-black via-black/70 to-transparent" />
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 ml-auto">
             <button
               onClick={() => setViewMode('list')}
               className={`${insightToggleButtonBase} ${
-                viewMode === 'list' 
-                  ? 'bg-white text-black' 
+                viewMode === 'list'
+                  ? 'bg-white text-black'
                   : 'bg-gray-700 text-white hover:bg-gray-600'
               }`}
             >
@@ -275,33 +433,35 @@ export default function Home() {
             <button
               onClick={() => setViewMode('wordcloud')}
               className={`${insightToggleButtonBase} ${
-                viewMode === 'wordcloud' 
-                  ? 'bg-white text-black' 
+                viewMode === 'wordcloud'
+                  ? 'bg-white text-black'
                   : 'bg-gray-700 text-white hover:bg-gray-600'
               }`}
             >
               Word Cloud
             </button>
             <div className="h-6 w-px bg-gray-700 mx-3" aria-hidden="true" />
+          </div>
+          <div className="flex items-center gap-3">
             <button
               onClick={() => setActiveView('raw')}
               className={`${insightToggleButtonBase} ${
-                activeView === 'raw' 
-                  ? 'bg-white text-black' 
+                activeView === 'raw'
+                  ? 'bg-white text-black'
                   : 'bg-gray-700 text-white hover:bg-gray-600'
               }`}
             >
               Raw Insights
             </button>
             <button
-              onClick={() => setActiveView('adjusted')}
+              onClick={() => setActiveView('filtered')}
               className={`${insightToggleButtonBase} ${
-                activeView === 'adjusted' 
-                  ? 'bg-white text-black' 
+                activeView === 'filtered'
+                  ? 'bg-white text-black'
                   : 'bg-gray-700 text-white hover:bg-gray-600'
               }`}
             >
-              Adjusted Insights
+              Filtered Insights
             </button>
           </div>
         </div>
@@ -310,9 +470,9 @@ export default function Home() {
         <div className="border-b border-gray-800 mb-4"></div>
 
         {/* List View or Word Cloud */}
-        <div className="flex-1 overflow-hidden flex flex-col min-h-0">
+        <div className="flex-1 overflow-hidden flex flex-col min-h-0 w-full">
           {viewMode === 'list' ? (
-            <div className="flex-1 overflow-y-auto w-full">
+            <div key={listViewKey} className="flex-1 overflow-y-auto w-full">
               <div className="grid grid-cols-[60px_1fr_120px_160px] gap-4 px-6 py-3 text-gray-400 text-sm uppercase tracking-wide border-b border-gray-800 sticky top-0 bg-black">
                 <span>#</span>
                 <span>Topic</span>
@@ -327,7 +487,14 @@ export default function Home() {
                       className="grid grid-cols-[60px_1fr_120px_160px] gap-4 items-center px-6 py-4 hover:bg-gray-900/60"
                     >
                       <span className="text-gray-400">{index + 1}</span>
-                      <span className="text-white font-semibold truncate">{insight.Topic}</span>
+                      <div className="flex items-center gap-2 min-w-0">
+                        <span className="text-white font-semibold truncate">{insight.Topic}</span>
+                        {isFilteredView && insight.FilterType ? (
+                          <span className="shrink-0 text-xs uppercase tracking-wide text-emerald-300/80 border border-emerald-400/40 px-2 py-0.5">
+                            {insight.FilterType}
+                          </span>
+                        ) : null}
+                      </div>
                       <span className="text-right text-white font-semibold">{insight.Mentions}</span>
                       <span className="text-right text-gray-300">
                         {formatTimeline(insight.Timeline)}
@@ -337,13 +504,13 @@ export default function Home() {
                 </ul>
               ) : (
                 <div className="px-6 py-12 text-center text-gray-400">
-                  No insights available for this range.
+                  No {datasetLabel.toLowerCase()} available for this range.
                 </div>
               )}
             </div>
           ) : (
             <div className="flex-1 flex flex-col pb-6 gap-4 w-full">
-              <div className="flex-1 min-h-0 w-full">
+              <div className="flex-1 min-h-0 w-full px-6">
                 <WordCloudChart data={wordCloudData} />
               </div>
               {wordCloudData.length ? (
@@ -410,7 +577,7 @@ export default function Home() {
             </div>
           </div>
           <div className="absolute right-6 top-1/2 -translate-y-1/2 text-white text-sm font-medium">
-            {getDisplayDateRange()}
+            {displayDateRange}
           </div>
         </div>
       </div>
