@@ -26,7 +26,7 @@ interface DatasetConfig {
   id: string;
 }
 
-type DateRange = '7D' | '1M' | '3M' | '6M' | '1Y' | 'CUSTOM';
+type DateRange = '1D' | '3D' | '7D' | 'CUSTOM';
 
 const WORD_CLOUD_LIMIT = 100;
 const DATASETS: DatasetConfig[] = [
@@ -62,7 +62,7 @@ export default function Home() {
   const [loadingKey, setLoadingKey] = useState<string | null>(null);
   const [activeView, setActiveView] = useState<'raw' | 'filtered'>('raw');
   const [viewMode, setViewMode] = useState<'list' | 'wordcloud'>('list');
-  const [dateRange, setDateRange] = useState<DateRange>('1M');
+  const [dateRange, setDateRange] = useState<DateRange>('7D');
   const [customStartDate, setCustomStartDate] = useState('');
   const [customEndDate, setCustomEndDate] = useState('');
   const [showCustomDialog, setShowCustomDialog] = useState(false);
@@ -148,20 +148,14 @@ export default function Home() {
     const cutoffDate = new Date(now);
 
     switch (dateRange) {
+      case '1D':
+        cutoffDate.setDate(now.getDate() - 1);
+        break;
+      case '3D':
+        cutoffDate.setDate(now.getDate() - 3);
+        break;
       case '7D':
         cutoffDate.setDate(now.getDate() - 7);
-        break;
-      case '1M':
-        cutoffDate.setMonth(now.getMonth() - 1);
-        break;
-      case '3M':
-        cutoffDate.setMonth(now.getMonth() - 3);
-        break;
-      case '6M':
-        cutoffDate.setMonth(now.getMonth() - 6);
-        break;
-      case '1Y':
-        cutoffDate.setFullYear(now.getFullYear() - 1);
         break;
       default:
         return '';
@@ -261,20 +255,14 @@ export default function Home() {
     const cutoffDate = new Date(now);
 
     switch (dateRange) {
+      case '1D':
+        cutoffDate.setDate(now.getDate() - 1);
+        break;
+      case '3D':
+        cutoffDate.setDate(now.getDate() - 3);
+        break;
       case '7D':
         cutoffDate.setDate(now.getDate() - 7);
-        break;
-      case '1M':
-        cutoffDate.setMonth(now.getMonth() - 1);
-        break;
-      case '3M':
-        cutoffDate.setMonth(now.getMonth() - 3);
-        break;
-      case '6M':
-        cutoffDate.setMonth(now.getMonth() - 6);
-        break;
-      case '1Y':
-        cutoffDate.setFullYear(now.getFullYear() - 1);
         break;
       default:
         return insights.filter((insight) => Boolean(parseTimelineRange(insight.Timeline)));
@@ -557,7 +545,7 @@ export default function Home() {
         <div className="max-w-full mx-auto w-full px-6 py-4 relative">
           <div className="flex items-center justify-center">
             <div className="flex gap-3 items-center">
-              {(['7D', '1M', '3M', '6M', '1Y'] as DateRange[]).map((range) => (
+              {(['1D', '3D', '7D'] as DateRange[]).map((range) => (
                 <button
                   key={range}
                   onClick={() => {
