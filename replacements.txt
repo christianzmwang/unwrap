@@ -1,1 +1,5 @@
-<PASTE_OLD_AZURE_KEY_HERE>==>REDACTED
+
+regex:AZURE[_A-Z]*KEY\s*=\s*["\'][A-Za-z0-9._-]{15,}["\']==>AZURE_OPENAI_KEY=os.getenv("AZURE_OPENAI_KEY")
+
+regex:sk-[A-Za-z0-9_-]{20,}==>REDACTED
+
