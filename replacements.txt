@@ -3,3 +3,4 @@ regex:AZURE[_A-Z]*KEY\s*=\s*["\'][A-Za-z0-9._-]{15,}["\']==>AZURE_OPENAI_KEY=os.
 
 regex:sk-[A-Za-z0-9_-]{20,}==>REDACTED
 
+REDACTED==>REDACTED
