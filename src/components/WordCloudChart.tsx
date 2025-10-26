@@ -103,7 +103,6 @@ function WordCloudChartComponent({ data }: WordCloudChartProps) {
           padding={3}
           spiral="rectangular"
           random={Math.random}
-          // @ts-expect-error react-d3-cloud fill typing is outdated
           fill={fill}
         />
       )}
