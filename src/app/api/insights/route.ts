@@ -43,6 +43,21 @@ const formatDateLabel = (value: Date | number | string | undefined | null) => {
   return `${year}-${month}-${day}`;
 };
 
+const formatHourLabel = (value: Date | number | string | undefined | null) => {
+  const millis = toMillis(value);
+  if (millis == null) {
+    return null;
+  }
+
+  const date = new Date(millis);
+  const year = date.getUTCFullYear();
+  const month = String(date.getUTCMonth() + 1).padStart(2, '0');
+  const day = String(date.getUTCDate()).padStart(2, '0');
+  const hour = String(date.getUTCHours()).padStart(2, '0');
+
+  return `${year}-${month}-${day}T${hour}:00:00Z`;
+};
+
 const formatTimeline = (value: Date | number | string | undefined | null) => {
   return formatDateLabel(value) ?? 'Unknown date';
 };
@@ -102,16 +117,16 @@ const getMentionCount = (insight: any) => {
   return 0;
 };
 
-const getDailyMentions = (insight: any) => {
+const getHourlyMentions = (insight: any) => {
   const mentions = Array.isArray(insight?.mentions) ? insight.mentions : [];
 
   if (!mentions.length) {
     const fallbackDate =
-      formatDateLabel(
+      formatHourLabel(
         insight?.date ?? insight?.generated_at ?? insight?.updated_at ?? insight?.created_at
       ) ?? (() => {
         const timeline = resolveTimeline(insight);
-        return timeline && timeline.toLowerCase() !== 'unknown date' ? timeline : null;
+        return timeline && timeline.toLowerCase() !== 'unknown date' ? formatHourLabel(timeline) : null;
       })();
 
     if (fallbackDate) {
@@ -131,7 +146,7 @@ const getDailyMentions = (insight: any) => {
       return acc;
     }
 
-    const label = formatDateLabel(
+    const label = formatHourLabel(
       (mention as any).date_posted ??
         (mention as any).data_posted ??
         (mention as any).date ??
@@ -160,7 +175,7 @@ const mapRawInsight = (insight: any) => ({
   Topic: insight?.insight ?? 'Unknown topic',
   Timeline: resolveTimeline(insight),
   Mentions: getMentionCount(insight),
-  DailyMentions: getDailyMentions(insight),
+  HourlyMentions: getHourlyMentions(insight),
 });
 
 const resolveFilteredTimeline = (insight: any) => {

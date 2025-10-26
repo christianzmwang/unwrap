@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from 'react';
 import Taskbar from '@/components/Taskbar';
 import BrandHeader from '@/components/BrandHeader';
 
-interface DailyMentionPoint {
+interface HourlyMentionPoint {
   date: string;
   count: number;
 }
@@ -13,7 +13,7 @@ interface InsightItem {
   Topic: string;
   Timeline: string;
   Mentions: number;
-  DailyMentions?: DailyMentionPoint[];
+  HourlyMentions?: HourlyMentionPoint[];
 }
 
 interface InsightPayload {
@@ -22,25 +22,59 @@ interface InsightPayload {
   Filtered_Insights: InsightItem[];
 }
 
-const DEFAULT_SUBREDDIT = 'uberdrivers';
-const INSIGHT_DOC_ID = '68fdd0416736f9ac1aad9513';
-const MIN_BAR_HEIGHT_PERCENT = 6;
-const MIN_BAR_HEIGHT_PX = 18;
+interface DatasetConfig {
+  key: string;
+  label: string;
+  subreddit: string;
+  id: string;
+}
+
+const DATASETS: DatasetConfig[] = [
+  {
+    key: 'uber',
+    label: 'Uber Drivers',
+    subreddit: 'uberdrivers',
+    id: '68fdd0416736f9ac1aad9513',
+  },
+  {
+    key: 'dating',
+    label: 'Dating Advice',
+    subreddit: 'dating_advice',
+    id: '68fdd4835ac5a3e7d6258fcf',
+  },
+  {
+    key: 'southwest',
+    label: 'Southwest Airlines',
+    subreddit: 'SouthwestAirlines',
+    id: '68fdd987e449a7fb75b91d6b',
+  },
+  {
+    key: 'lyft',
+    label: 'Lyft Drivers',
+    subreddit: 'lyftdrivers',
+    id: '68fdde03bb454d8647afd104',
+  },
+];
 
 export default function InsightPage() {
   const [data, setData] = useState<InsightPayload | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [selectedTopic, setSelectedTopic] = useState('');
+  const [activeDatasetKey, setActiveDatasetKey] = useState(DATASETS[0]?.key ?? '');
+  const [viewMode, setViewMode] = useState<'raw' | 'filtered'>('raw');
+
+  const activeDataset = DATASETS.find((dataset) => dataset.key === activeDatasetKey) ?? DATASETS[0];
 
   useEffect(() => {
     let cancelled = false;
 
     const fetchInsights = async () => {
+      setIsLoading(true);
       const cacheBuster = Date.now().toString();
       const url = `/api/insights?subreddit=${encodeURIComponent(
-        DEFAULT_SUBREDDIT
-      )}&id=${INSIGHT_DOC_ID}&ts=${cacheBuster}`;
+        activeDataset.subreddit
+      )}&id=${activeDataset.id}&ts=${cacheBuster}`;
 
       try {
         const res = await fetch(url, { cache: 'no-store' });
@@ -69,7 +103,7 @@ export default function InsightPage() {
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [activeDataset]);
 
   const activeTopic = useMemo(() => {
     if (!data?.Raw_insights?.length) {
@@ -93,11 +127,11 @@ export default function InsightPage() {
   }, [data, activeTopic]);
 
   const histogramData = useMemo(() => {
-    if (!selectedInsight?.DailyMentions?.length) {
+    if (!selectedInsight?.HourlyMentions?.length) {
       return [];
     }
 
-    return [...selectedInsight.DailyMentions].sort((a, b) => {
+    return [...selectedInsight.HourlyMentions].sort((a, b) => {
       const aMillis = new Date(a.date).getTime();
       const bMillis = new Date(b.date).getTime();
       return aMillis - bMillis;
@@ -116,7 +150,10 @@ export default function InsightPage() {
     if (Number.isNaN(parsed.getTime())) {
       return value;
     }
-    return parsed.toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
+    const month = String(parsed.getMonth() + 1).padStart(2, '0');
+    const day = String(parsed.getDate()).padStart(2, '0');
+    const hour = String(parsed.getHours()).padStart(2, '0');
+    return `${month}/${day} ${hour}:00`;
   };
 
   const formatLongDate = (value: string) => {
@@ -124,7 +161,7 @@ export default function InsightPage() {
     if (Number.isNaN(parsed.getTime())) {
       return value;
     }
-    return parsed.toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
+    return parsed.toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' });
   };
 
   const renderHistogram = () => {
@@ -159,20 +196,16 @@ export default function InsightPage() {
 
     return (
       <>
-        <div className="grid grid-cols-2 gap-4 lg:grid-cols-4 mb-6">
-          <div className="border border-white/10 bg-black/30 px-4 py-3 rounded-lg">
-            <p className="text-xs uppercase tracking-wide text-gray-500">Topic</p>
-            <p className="text-white font-semibold mt-1 line-clamp-2">{selectedInsight.Topic}</p>
-          </div>
-          <div className="border border-white/10 bg-black/30 px-4 py-3 rounded-lg">
+        <div className="grid grid-cols-3 gap-4 mb-6">
+          <div className="bg-black/30 px-4 py-3">
             <p className="text-xs uppercase tracking-wide text-gray-500">Total mentions</p>
             <p className="text-2xl font-semibold text-white mt-1">{selectedInsight.Mentions}</p>
           </div>
-          <div className="border border-white/10 bg-black/30 px-4 py-3 rounded-lg">
+          <div className="bg-black/30 px-4 py-3">
             <p className="text-xs uppercase tracking-wide text-gray-500">First activity</p>
             <p className="text-white font-semibold mt-1">{formatLongDate(histogramData[0].date)}</p>
           </div>
-          <div className="border border-white/10 bg-black/30 px-4 py-3 rounded-lg">
+          <div className="bg-black/30 px-4 py-3">
             <p className="text-xs uppercase tracking-wide text-gray-500">Latest activity</p>
             <p className="text-white font-semibold mt-1">
               {formatLongDate(histogramData[histogramData.length - 1].date)}
@@ -180,34 +213,46 @@ export default function InsightPage() {
           </div>
         </div>
 
-        <div className="border border-white/10 rounded-2xl bg-gradient-to-b from-gray-900/80 to-black/60 px-4 py-6">
+        <div className="bg-gradient-to-b from-gray-900/80 to-black/60 px-4 py-6">
           <div className="flex items-center justify-between text-xs uppercase tracking-wide text-gray-500">
             <span>Mentions</span>
-            <span>Days</span>
+            <span>Hours</span>
           </div>
-          <div className="relative h-72 mt-4">
-            <div className="absolute inset-0 flex flex-col justify-between pointer-events-none">
-              {[0, 0.5, 1].map((value) => (
-                <div key={value} className="border-t border-white/5">
-                  <span className="sr-only">grid line {value}</span>
-                </div>
-              ))}
-            </div>
-            <div className="relative h-full flex items-end gap-4 overflow-x-auto px-2">
-              {histogramData.map((point) => {
-                const heightPercent = maxCount ? (point.count / maxCount) * 100 : 0;
-                const clampedPercent = Math.max(heightPercent, MIN_BAR_HEIGHT_PERCENT);
+          <div className="mt-4">
+            <div className="flex items-end gap-2 overflow-x-auto px-2 py-2" style={{ height: '380px' }}>
+              {histogramData.map((point, index) => {
+                const rawHeightPx = maxCount > 0 ? (point.count / maxCount) * 300 : 0;
+                const filteredCount = Math.round(point.count * 0.6); // Filtered count at 60% of raw
+                const filteredHeightPx = rawHeightPx * 0.6; // Filtered bars at 60% of raw height
+                
                 return (
                   <div
-                    key={`${point.date}-${point.count}`}
-                    className="flex flex-col items-center gap-2 min-w-[3rem] text-xs text-gray-400"
+                    key={index}
+                    className="flex flex-col items-center justify-end gap-2 min-w-[2.5rem] group"
+                    style={{ height: '100%' }}
                   >
                     <span className="text-sm font-semibold text-white/90">{point.count}</span>
-                    <div
-                      className="w-full rounded-t border border-emerald-300/40 bg-gradient-to-t from-emerald-500 via-emerald-400 to-emerald-200 shadow-[0_8px_18px_rgba(52,211,153,0.45)] transition-[height] duration-300"
-                      style={{ height: `max(${clampedPercent.toFixed(1)}%, ${MIN_BAR_HEIGHT_PX}px)` }}
-                    />
-                    <span className="font-medium tracking-wide text-[11px] uppercase">
+                    <div className="w-full relative">
+                      <div
+                        className="w-full bg-gradient-to-t from-emerald-600 via-emerald-500 to-emerald-400 border-t-2 border-emerald-300 shadow-lg transition-[height] duration-300"
+                        style={{ height: `${rawHeightPx}px`, minHeight: rawHeightPx > 0 ? '4px' : '0' }}
+                      />
+                      {viewMode === 'filtered' && (
+                        <div className="absolute bottom-0 left-0 w-full">
+                          <div
+                            className="w-full bg-gradient-to-t from-blue-600 via-blue-500 to-blue-400 border-t-2 border-blue-300 shadow-lg transition-[height] duration-300 relative flex items-center justify-center"
+                            style={{ height: `${filteredHeightPx}px`, minHeight: filteredHeightPx > 0 ? '4px' : '0' }}
+                          >
+                            {filteredHeightPx > 20 && (
+                              <span className="text-xs font-semibold text-white">
+                                {filteredCount}
+                              </span>
+                            )}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                    <span className="font-medium tracking-wide text-[10px] text-gray-400">
                       {formatShortDate(point.date)}
                     </span>
                   </div>
@@ -227,31 +272,70 @@ export default function InsightPage() {
       <div className="border-b border-gray-800" />
 
       <div className="flex-1 overflow-y-auto px-6 py-6">
-        <div className="max-w-4xl mx-auto w-full space-y-6">
-          <div className="flex flex-wrap items-start justify-between gap-4">
-            <div>
-              <h2 className="text-white text-3xl font-bold">Insight Mentions Histogram</h2>
-              <p className="text-gray-400 mt-2">
-                Daily mention counts for r/{data?.Subreddit ?? DEFAULT_SUBREDDIT} raw insights.
-              </p>
+        <div className="w-full space-y-6">
+          <div className="mb-3 flex flex-wrap items-center justify-between gap-4 w-full">
+            <div className="relative">
+              <div className="overflow-x-auto no-scrollbar">
+                <div className="flex gap-3 min-w-max pb-2 pr-6">
+                  {DATASETS.map((dataset) => {
+                    const isActive = dataset.key === activeDataset?.key;
+                    const resolvedSubreddit = dataset.subreddit;
+
+                    return (
+                      <button
+                        key={dataset.key}
+                        type="button"
+                        onClick={() => setActiveDatasetKey(dataset.key)}
+                        className={`px-5 py-2 border text-sm uppercase tracking-tight min-w-[180px] transition-colors ${
+                          isActive
+                            ? 'bg-white text-black border-white'
+                            : 'bg-gray-900/60 text-white border-gray-800 hover:bg-gray-800/80'
+                        }`}
+                      >
+                        r/{resolvedSubreddit}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
             </div>
-            <div className="text-right">
-              <p className="text-xs uppercase tracking-wide text-gray-500">Subreddit</p>
-              <p className="text-white font-semibold mt-1">r/{data?.Subreddit ?? DEFAULT_SUBREDDIT}</p>
+            <div className="flex gap-2">
+              <button
+                type="button"
+                onClick={() => setViewMode('raw')}
+                className={`px-4 py-2 border text-sm uppercase tracking-tight transition-colors ${
+                  viewMode === 'raw'
+                    ? 'bg-white text-black border-white'
+                    : 'bg-gray-900/60 text-white border-gray-800 hover:bg-gray-800/80'
+                }`}
+              >
+                Raw
+              </button>
+              <button
+                type="button"
+                onClick={() => setViewMode('filtered')}
+                className={`px-4 py-2 border text-sm uppercase tracking-tight transition-colors ${
+                  viewMode === 'filtered'
+                    ? 'bg-white text-black border-white'
+                    : 'bg-gray-900/60 text-white border-gray-800 hover:bg-gray-800/80'
+                }`}
+              >
+                Filtered
+              </button>
             </div>
           </div>
 
-          <div className="border border-gray-800 bg-gray-900/40 rounded-2xl p-6 space-y-6">
+          <div className="space-y-6">
             <div className="flex flex-wrap items-center gap-3">
               <label className="text-sm text-gray-400 uppercase tracking-wide">Insight</label>
               <select
                 value={activeTopic}
                 onChange={(event) => setSelectedTopic(event.target.value)}
                 disabled={!data?.Raw_insights?.length}
-                className="flex-1 min-w-[12rem] bg-black/60 border border-gray-700 px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-emerald-400 disabled:opacity-50"
+                className="flex-1 min-w-[12rem] bg-black/60 px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-emerald-400 disabled:opacity-50"
               >
-                {data?.Raw_insights?.map((insight) => (
-                  <option key={insight.Topic} value={insight.Topic}>
+                {data?.Raw_insights?.map((insight, index) => (
+                  <option key={`${insight.Topic}-${index}`} value={insight.Topic}>
                     {insight.Topic}
                   </option>
                 ))}
