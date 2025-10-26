@@ -20,6 +20,7 @@ type DateRange = '7D' | '1M' | '3M' | '6M' | '1Y' | 'CUSTOM';
 export default function Home() {
   const [data, setData] = useState<InsightData | null>(null);
   const [activeView, setActiveView] = useState<'raw' | 'adjusted'>('raw');
+  const [viewMode, setViewMode] = useState<'list' | 'wordcloud'>('list');
   const [dateRange, setDateRange] = useState<DateRange>('1M');
   const [customStartDate, setCustomStartDate] = useState('');
   const [customEndDate, setCustomEndDate] = useState('');
@@ -231,6 +232,26 @@ export default function Home() {
           </div>
           <div className="flex gap-3">
             <button
+              onClick={() => setViewMode('list')}
+              className={`${insightToggleButtonBase} ${
+                viewMode === 'list' 
+                  ? 'bg-white text-black' 
+                  : 'bg-gray-700 text-white hover:bg-gray-600'
+              }`}
+            >
+              List
+            </button>
+            <button
+              onClick={() => setViewMode('wordcloud')}
+              className={`${insightToggleButtonBase} ${
+                viewMode === 'wordcloud' 
+                  ? 'bg-white text-black' 
+                  : 'bg-gray-700 text-white hover:bg-gray-600'
+              }`}
+            >
+              Word Cloud
+            </button>
+            <button
               onClick={() => setActiveView('raw')}
               className={`${insightToggleButtonBase} ${
                 activeView === 'raw' 
@@ -256,37 +277,43 @@ export default function Home() {
         {/* Full Width Separator */}
         <div className="border-b border-gray-800 mb-4"></div>
 
-        {/* List View */}
+        {/* List View or Word Cloud */}
         <div className="flex-1 overflow-hidden flex flex-col min-h-0">
-          <div className="flex-1 overflow-y-auto w-full">
-            <div className="grid grid-cols-[60px_1fr_120px_160px] gap-4 px-6 py-3 text-gray-400 text-sm uppercase tracking-wide border-b border-gray-800 sticky top-0 bg-black">
-              <span>#</span>
-              <span>Topic</span>
-              <span className="text-right">Mentions</span>
-              <span className="text-right">Latest Timeline</span>
-            </div>
-            {insights.length ? (
-              <ul className="divide-y divide-gray-800">
-                {insights.map((insight, index) => (
-                  <li
-                    key={`${insight.Topic}-${insight.Timeline}-${index}`}
-                    className="grid grid-cols-[60px_1fr_120px_160px] gap-4 items-center px-6 py-4 hover:bg-gray-900/60"
-                  >
-                    <span className="text-gray-400">{index + 1}</span>
-                    <span className="text-white font-semibold truncate">{insight.Topic}</span>
-                    <span className="text-right text-white font-semibold">{insight.Mentions}</span>
-                    <span className="text-right text-gray-300">
-                      {formatTimeline(insight.Timeline)}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <div className="px-6 py-12 text-center text-gray-400">
-                No insights available for this range.
+          {viewMode === 'list' ? (
+            <div className="flex-1 overflow-y-auto w-full">
+              <div className="grid grid-cols-[60px_1fr_120px_160px] gap-4 px-6 py-3 text-gray-400 text-sm uppercase tracking-wide border-b border-gray-800 sticky top-0 bg-black">
+                <span>#</span>
+                <span>Topic</span>
+                <span className="text-right">Mentions</span>
+                <span className="text-right">Latest Timeline</span>
               </div>
-            )}
-          </div>
+              {insights.length ? (
+                <ul className="divide-y divide-gray-800">
+                  {insights.map((insight, index) => (
+                    <li
+                      key={`${insight.Topic}-${insight.Timeline}-${index}`}
+                      className="grid grid-cols-[60px_1fr_120px_160px] gap-4 items-center px-6 py-4 hover:bg-gray-900/60"
+                    >
+                      <span className="text-gray-400">{index + 1}</span>
+                      <span className="text-white font-semibold truncate">{insight.Topic}</span>
+                      <span className="text-right text-white font-semibold">{insight.Mentions}</span>
+                      <span className="text-right text-gray-300">
+                        {formatTimeline(insight.Timeline)}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <div className="px-6 py-12 text-center text-gray-400">
+                  No insights available for this range.
+                </div>
+              )}
+            </div>
+          ) : (
+            <div className="flex-1 flex items-center justify-center">
+              <div className="text-gray-400 text-lg">Word Cloud View - Coming Soon</div>
+            </div>
+          )}
         </div>
 
       </div>
