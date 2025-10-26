@@ -13,25 +13,10 @@ export interface IMention {
   sentiment_score?: number;
 }
 
-// Raw insight data (unfiltered)
-export interface IRawInsight {
+// Insight data (used for both raw and filtered)
+export interface IInsight {
   topic: string;
   date: Date;
-  mentions: IMention[];
-  num_mentions: number;
-}
-
-// Filtered insight data (filtered subset)
-export interface IFilteredInsight {
-  topic: string;
-  date: Date;
-  filter_type: string;
-  filter_criteria: {
-    min_score?: number;
-    min_comments?: number;
-    sentiment_range?: [number, number];
-    date_range?: [Date, Date];
-  };
   mentions: IMention[];
   num_mentions: number;
 }
@@ -39,8 +24,8 @@ export interface IFilteredInsight {
 // Main data schema
 export interface IDataSchema {
   subreddit: string;
-  raw_insights: IRawInsight[];
-  filtered_insights: IFilteredInsight[];
+  raw_insights: IInsight[];
+  filtered_insights: IInsight[];
   created_at: Date;
   updated_at: Date;
 }
@@ -86,7 +71,7 @@ const MentionSchema = new Schema<IMention>({
   },
 }, { _id: false });
 
-const RawInsightSchema = new Schema<IRawInsight>({
+const InsightSchema = new Schema<IInsight>({
   topic: {
     type: String,
     required: true,
@@ -94,32 +79,6 @@ const RawInsightSchema = new Schema<IRawInsight>({
   date: {
     type: Date,
     required: true,
-  },
-  mentions: [MentionSchema],
-  num_mentions: {
-    type: Number,
-    default: 0,
-  },
-}, { _id: false });
-
-const FilteredInsightSchema = new Schema<IFilteredInsight>({
-  topic: {
-    type: String,
-    required: true,
-  },
-  date: {
-    type: Date,
-    required: true,
-  },
-  filter_type: {
-    type: String,
-    required: true,
-  },
-  filter_criteria: {
-    min_score: Number,
-    min_comments: Number,
-    sentiment_range: [Number],
-    date_range: [Date],
   },
   mentions: [MentionSchema],
   num_mentions: {
@@ -134,8 +93,8 @@ const DataSchema = new Schema<IDataSchema>({
     required: true,
     index: true,
   },
-  raw_insights: [RawInsightSchema],
-  filtered_insights: [FilteredInsightSchema],
+  raw_insights: [InsightSchema],
+  filtered_insights: [InsightSchema],
   created_at: {
     type: Date,
     default: Date.now,
