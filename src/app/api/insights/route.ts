@@ -88,8 +88,8 @@ const resolveTimeline = (insight: unknown) => {
     return formatTimeline(withDate.date as any);
   }
 
-  const mentions = Array.isArray(withDate.mentions) ? withDate.mentions : [];
-  const latest = mentions.reduce<number | null>((acc, mention) => {
+  const mentions: unknown[] = Array.isArray(withDate.mentions) ? withDate.mentions : [];
+  const latest = mentions.reduce((acc: number | null, mention) => {
     if (!mention || typeof mention !== 'object') {
       return acc;
     }
@@ -118,7 +118,7 @@ const getMentionCount = (insight: any) => {
 };
 
 const getHourlyMentions = (insight: any) => {
-  const mentions = Array.isArray(insight?.mentions) ? insight.mentions : [];
+  const mentions: unknown[] = Array.isArray(insight?.mentions) ? insight.mentions : [];
 
   if (!mentions.length) {
     const fallbackDate =
@@ -141,7 +141,7 @@ const getHourlyMentions = (insight: any) => {
     return [];
   }
 
-  const counts = mentions.reduce<Record<string, number>>((acc, mention) => {
+  const counts = mentions.reduce((acc: Record<string, number>, mention) => {
     if (!mention || typeof mention !== 'object') {
       return acc;
     }
